@@ -517,8 +517,18 @@ export default function VideoGeneratePage() {
 
           if (status === 'success' && videoUrl) {
             console.log('[T2V] ✅ 视频生成成功，设置结果...');
-            setT2vProgress(100); // 成功时设置为100%
-            setGeneratedT2VVideo(videoUrl);
+            setT2vProgress(100);
+            let finalUrl = videoUrl;
+            try {
+              const saveRes = await fetch('/api/ai/save-result-to-r2', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: videoUrl, type: 'video' }),
+              });
+              const saveJson = await saveRes.json();
+              if (saveJson.code === 1000 && saveJson.data?.url) finalUrl = saveJson.data.url;
+            } catch (_) {}
+            setGeneratedT2VVideo(finalUrl);
             setIsGeneratingT2V(false);
             toast.success(t('toast.videoGenerateSuccess'));
             return;
@@ -597,8 +607,18 @@ export default function VideoGeneratePage() {
 
           if (status === 'success' && videoUrl) {
             console.log('[I2V] ✅ 视频生成成功，设置结果...');
-            setI2vProgress(100); // 成功时设置为100%
-            setGeneratedI2VVideo(videoUrl);
+            setI2vProgress(100);
+            let finalUrl = videoUrl;
+            try {
+              const saveRes = await fetch('/api/ai/save-result-to-r2', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: videoUrl, type: 'video' }),
+              });
+              const saveJson = await saveRes.json();
+              if (saveJson.code === 1000 && saveJson.data?.url) finalUrl = saveJson.data.url;
+            } catch (_) {}
+            setGeneratedI2VVideo(finalUrl);
             setIsGeneratingI2V(false);
             toast.success(t('toast.videoGenerateSuccess'));
             return;

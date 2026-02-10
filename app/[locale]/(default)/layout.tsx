@@ -14,14 +14,19 @@ export default async function DefaultLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const page = await getLandingPage(locale);
+  let page: Awaited<ReturnType<typeof getLandingPage>> | null = null;
+  try {
+    page = await getLandingPage(locale);
+  } catch (e) {
+    console.error("[DefaultLayout] getLandingPage failed:", e);
+  }
 
   return (
     <>
-      {page.header && <Header header={page.header} />}
+      {page?.header && <Header header={page.header} />}
       <main className="overflow-x-hidden">{children}</main>
-      {page.footer && <Footer footer={page.footer} />}
-      <Feedback socialLinks={page.footer?.social?.items} />
+      {page?.footer && <Footer footer={page.footer} />}
+      <Feedback socialLinks={page?.footer?.social?.items} />
       <SignModal />
       <AuthMigrator />
     </>

@@ -26,18 +26,25 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  // locale is available but not needed for getTranslations
   await params;
-  const t = await getTranslations();
-
-  return {
-    title: {
-      template: `%s`,
-      default: t("metadata.title") || "",
-    },
-    description: t("metadata.description") || "",
-    keywords: t("metadata.keywords") || "",
-  };
+  try {
+    const t = await getTranslations();
+    return {
+      title: {
+        template: `%s`,
+        default: t("metadata.title") || "",
+      },
+      description: t("metadata.description") || "",
+      keywords: t("metadata.keywords") || "",
+    };
+  } catch (e) {
+    console.error("[RootLayout] generateMetadata failed:", e);
+    return {
+      title: { template: `%s`, default: "" },
+      description: "",
+      keywords: "",
+    };
+  }
 }
 
 export default async function RootLayout({
@@ -48,8 +55,23 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
-  const messages = await getMessages();
-  const session = await auth();
+  let messages: Awaited<ReturnType<typeof getMessages>> = {};
+  try {
+    messages = await getMessages();
+  } catch (e) {
+    console.error("[RootLayout] getMessages() failed:", e);
+    try {
+      messages = (await import("@/i18n/messages/en.json")).default;
+    } catch {
+      // keep {}
+    }
+  }
+  let session: Awaited<ReturnType<typeof auth>> = null;
+  try {
+    session = await auth();
+  } catch (e) {
+    console.error("[RootLayout] auth() failed:", e);
+  }
   const webUrl = process.env.NEXT_PUBLIC_WEB_URL || "";
   const googleAdsenseCode = process.env.NEXT_PUBLIC_GOOGLE_ADCODE || "";
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID || "";
@@ -119,8 +141,8 @@ export default async function RootLayout({
           />
         )}
         <NextIntlClientProvider messages={messages}>
-          <AuthSessionProvider>
-            <AppContextProvider initialUserData={{ user: session?.user }}>
+<AuthSessionProvider session={session}>
+              <AppContextProvider initialUserData={{ user: session?.user }}>
               <ThemeProvider
                 attribute="class"
                 disableTransitionOnChange

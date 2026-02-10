@@ -19,7 +19,14 @@ export default async function LandingPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations("homepage");
+  let t: Awaited<ReturnType<typeof getTranslations>>;
+  try {
+    t = await getTranslations("homepage");
+  } catch (e) {
+    console.error("[LandingPage] getTranslations failed:", e);
+    const fallback = (key: string) => key;
+    t = fallback as Awaited<ReturnType<typeof getTranslations>>;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-purple-50 dark:to-purple-950/20">
