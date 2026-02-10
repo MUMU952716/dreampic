@@ -18,7 +18,9 @@ export function createSupabaseServerClient(props: {
         async getAll() {
           return (await props.cookies()).getAll();
         },
-        async setAll(cookiesToSet) {
+        async setAll(
+          cookiesToSet: { name: string; value: string; options?: Record<string, unknown> }[]
+        ) {
           const store = await props.cookies();
           cookiesToSet.forEach(({ name, value, options }) =>
             store.set(name, value, options)
