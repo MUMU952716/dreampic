@@ -5,8 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { FcGoogle } from "react-icons/fc";
 
-export default function SignInForm({ callbackUrl }: { callbackUrl?: string }) {
-  const isGoogleEnabled = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ENABLED === "true";
+export default function SignInForm({
+  callbackUrl,
+  isGoogleEnabled: isGoogleEnabledProp,
+}: {
+  callbackUrl?: string;
+  isGoogleEnabled?: boolean;
+}) {
+  const isGoogleEnabled =
+    isGoogleEnabledProp ?? process.env.NEXT_PUBLIC_AUTH_GOOGLE_ENABLED === "true";
 
   const handleGoogleSignIn = () => {
     signIn("google", { callbackUrl: callbackUrl || "/" });
