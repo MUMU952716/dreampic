@@ -15,6 +15,7 @@ import AuthSessionProvider from "@/auth/session";
 import SignModal from "@/components/sign/modal";
 import { AppContextProvider } from "@/contexts/app";
 import { auth } from "@/auth";
+import type { Session } from "next-auth";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -66,7 +67,7 @@ export default async function RootLayout({
       // keep {}
     }
   }
-  let session: Awaited<ReturnType<typeof auth>> = null;
+  let session: Session | null = null;
   try {
     session = await auth();
   } catch (e) {

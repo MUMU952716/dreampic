@@ -139,7 +139,7 @@ export default function Header({ header }: { header: HeaderType }) {
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
                             <ul className="w-80 p-3">
-                              {item.children.map((iitem, ii) => {
+                                        {item.children.map((iitem, ii) => {
                                 // 如果二级菜单有children（三级菜单），渲染分组标题
                                 if (iitem.children && iitem.children.length > 0) {
                                   return (

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useTranslations } from 'next-intl';
+import { useSession } from 'next-auth/react';
 import { Button } from "@/components/ui/button";
 import { authEventBus } from "@/lib/auth-event";
 import { Textarea } from "@/components/ui/textarea";
@@ -99,13 +100,14 @@ interface VideoModel {
 
 export default function VideoGeneratePage() {
   const params = useParams();
-  const routeModel = params?.model as string || 'all'; // 获取路由中的模型参数
+  const routeModel = params?.model as string || 'all';
   const t = useTranslations('video-generate');
+  const { data: session } = useSession();
   const { getCredits } = useConsumptionItems();
 
-  // 通用状态
   const [aiHubToken, setAiHubToken] = useState<string>("");
   const [isMounted, setIsMounted] = useState(false);
+  const isLoggedIn = !!(session?.user || aiHubToken);
 
   // Text to Video 状态
   const [t2vPrompt, setT2vPrompt] = useState("");
@@ -201,16 +203,8 @@ export default function VideoGeneratePage() {
         console.log('[VideoModels] 开始获取模型列表');
 
         // 构建请求头，如果有 token 就带上，没有也能请求
-        const headers: HeadersInit = {};
-        if (aiHubToken) {
-          headers['Authorization'] = aiHubToken;
-          console.log('[VideoModels] 使用 token 请求');
-        } else {
-          console.log('[VideoModels] 无 token，尝试公开访问');
-        }
-
         const response = await fetch('/api/ai/video-models', {
-          headers,
+          credentials: 'include',
         });
 
         console.log('[VideoModels] API 响应状态:', response.status);
@@ -251,7 +245,7 @@ export default function VideoGeneratePage() {
 
     // 无论是否有 token 都获取模型列表
     fetchVideoModels();
-  }, [aiHubToken]);
+  }, [aiHubToken, session]);
 
   // 当过滤后的模型列表变化时，设置默认选中第一个模型
   useEffect(() => {
@@ -315,33 +309,42 @@ export default function VideoGeneratePage() {
     };
     reader.readAsDataURL(file);
 
-    // 上传到 COS
     try {
       setIsUploadingImage(true);
       setUploadProgress(0);
-      
-      console.log('[I2V] 开始上传图片到 COS...');
-      const imageUrl = await cosUploadService.uploadFileWithRetry(
-        file,
-        'video-generation/audio', // 使用视频生成音频驱动类型
-        {
-          onProgress: (progress) => {
-            setUploadProgress(progress);
-            console.log('[I2V] 上传进度:', progress + '%');
-          },
-          onError: (error) => {
-            console.error('[I2V] 上传错误:', error);
-          }
-        }
-      );
 
-      setReferenceImageUrl(imageUrl);
-      console.log('[I2V] 图片上传成功:', imageUrl);
-      toast.success(t('toast.imageUploadSuccess'));
+      const isVeoRoute = routeModel === 'veo' || routeModel === 'google-veo' || routeModel === 'veo-3';
+      if (isVeoRoute) {
+        const formData = new FormData();
+        formData.append('file', file);
+        const uploadRes = await fetch('/api/upload', { method: 'POST', body: formData, credentials: 'include' });
+        const uploadJson = await uploadRes.json();
+        if (!uploadRes.ok || !uploadJson.fileKey) throw new Error(uploadJson.error || '上传失败');
+        const presignRes = await fetch(`/api/presigned-url?fileKey=${encodeURIComponent(uploadJson.fileKey)}`, { credentials: 'include' });
+        const presignJson = await presignRes.json();
+        if (!presignRes.ok || !presignJson.signedUrl) throw new Error(presignJson.error || '获取链接失败');
+        setReferenceImageUrl(presignJson.signedUrl);
+        toast.success(t('toast.imageUploadSuccess'));
+      } else {
+        const imageUrl = await cosUploadService.uploadFileWithRetry(
+          file,
+          'video-generation/audio',
+          {
+            onProgress: (progress) => {
+              setUploadProgress(progress);
+              console.log('[I2V] 上传进度:', progress + '%');
+            },
+            onError: (error) => {
+              console.error('[I2V] 上传错误:', error);
+            }
+          }
+        );
+        setReferenceImageUrl(imageUrl);
+        toast.success(t('toast.imageUploadSuccess'));
+      }
     } catch (error) {
       console.error('[I2V] 图片上传失败:', error);
       toast.error(error instanceof Error ? error.message : t('toast.imageUploadFailed'));
-      // 上传失败时清除图片
       setReferenceImage(null);
       setReferenceImagePreview(null);
       setReferenceImageUrl(null);
@@ -493,9 +496,7 @@ export default function VideoGeneratePage() {
     const poll = async () => {
       try {
         const response = await fetch(`/api/ai/video-generate/task-status?taskId=${taskId}`, {
-          headers: {
-            'Authorization': aiHubToken,
-          },
+          credentials: 'include',
         });
 
         const result = await response.json();
@@ -518,17 +519,7 @@ export default function VideoGeneratePage() {
           if (status === 'success' && videoUrl) {
             console.log('[T2V] ✅ 视频生成成功，设置结果...');
             setT2vProgress(100);
-            let finalUrl = videoUrl;
-            try {
-              const saveRes = await fetch('/api/ai/save-result-to-r2', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url: videoUrl, type: 'video' }),
-              });
-              const saveJson = await saveRes.json();
-              if (saveJson.code === 1000 && saveJson.data?.url) finalUrl = saveJson.data.url;
-            } catch (_) {}
-            setGeneratedT2VVideo(finalUrl);
+            setGeneratedT2VVideo(videoUrl);
             setIsGeneratingT2V(false);
             toast.success(t('toast.videoGenerateSuccess'));
             return;
@@ -583,9 +574,7 @@ export default function VideoGeneratePage() {
     const poll = async () => {
       try {
         const response = await fetch(`/api/ai/video-generate/task-status?taskId=${taskId}`, {
-          headers: {
-            'Authorization': aiHubToken,
-          },
+          credentials: 'include',
         });
 
         const result = await response.json();
@@ -608,17 +597,7 @@ export default function VideoGeneratePage() {
           if (status === 'success' && videoUrl) {
             console.log('[I2V] ✅ 视频生成成功，设置结果...');
             setI2vProgress(100);
-            let finalUrl = videoUrl;
-            try {
-              const saveRes = await fetch('/api/ai/save-result-to-r2', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url: videoUrl, type: 'video' }),
-              });
-              const saveJson = await saveRes.json();
-              if (saveJson.code === 1000 && saveJson.data?.url) finalUrl = saveJson.data.url;
-            } catch (_) {}
-            setGeneratedI2VVideo(finalUrl);
+            setGeneratedI2VVideo(videoUrl);
             setIsGeneratingI2V(false);
             toast.success(t('toast.videoGenerateSuccess'));
             return;
@@ -664,12 +643,10 @@ export default function VideoGeneratePage() {
     poll();
   };
 
-  // Text to Video 生成
   const handleT2VGenerate = async () => {
-    if (!aiHubToken) {
+    if (!isLoggedIn) {
       saveRedirectUrl();
       toast.error(t('toast.pleaseLogin'));
-      // 触发登录弹窗
       authEventBus.emit({
         type: 'login-expired',
         message: t('toast.pleaseLogin')
@@ -698,10 +675,8 @@ export default function VideoGeneratePage() {
 
       const response = await fetch('/api/ai/video-generate/create', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': aiHubToken,
-        },
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           prompt: t2vPrompt,
           model: t2vModel,
@@ -731,12 +706,10 @@ export default function VideoGeneratePage() {
     }
   };
 
-  // Image to Video 生成
   const handleI2VGenerate = async () => {
-    if (!aiHubToken) {
+    if (!isLoggedIn) {
       saveRedirectUrl();
       toast.error(t('toast.pleaseLogin'));
-      // 触发登录弹窗
       authEventBus.emit({
         type: 'login-expired',
         message: t('toast.pleaseLogin')
@@ -771,10 +744,8 @@ export default function VideoGeneratePage() {
 
       const response = await fetch('/api/ai/video-generate/create', {
         method: 'POST',
-        headers: {
-          'Authorization': aiHubToken,
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           prompt: i2vPrompt,
           imageUrl: referenceImageUrl,
