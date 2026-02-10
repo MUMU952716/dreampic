@@ -1,19 +1,27 @@
 "use client";
 
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { ReactNode } from "react";
 import { toast } from "sonner";
 
-export default function ({
-  text,
-  children,
-}: {
+interface CopyCellProps {
   text: string;
   children: ReactNode;
-}) {
+}
+
+export default function CopyCell({ text, children }: CopyCellProps) {
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success("Copied");
+    } catch (error) {
+      console.error("[CopyCell] Failed to copy:", error);
+      toast.error("Copy failed");
+    }
+  };
+
   return (
-    <CopyToClipboard text={text} onCopy={() => toast.success("Copied")}>
-      <div className="cursor-pointer">{children}</div>
-    </CopyToClipboard>
+    <div className="cursor-pointer" onClick={handleCopy}>
+      {children}
+    </div>
   );
 }

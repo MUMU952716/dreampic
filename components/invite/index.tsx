@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import Icon from "@/components/icon";
 import InviteModal from "./modal";
 import { User } from "@/types/user";
@@ -91,12 +90,21 @@ export default function Invite({ summary }: { summary: any }) {
               />
             </div>
             {user.invite_code && (
-              <CopyToClipboard
-                text={`${process.env.NEXT_PUBLIC_WEB_URL}/i/${user?.invite_code}`}
-                onCopy={() => toast.success("copied")}
+              <Button
+                size="sm"
+                onClick={async () => {
+                  try {
+                    const url = `${process.env.NEXT_PUBLIC_WEB_URL}/i/${user?.invite_code}`;
+                    await navigator.clipboard.writeText(url);
+                    toast.success("copied");
+                  } catch (error) {
+                    console.error("[Invite] Failed to copy invite link:", error);
+                    toast.error("copy failed");
+                  }
+                }}
               >
-                <Button size="sm">{t("my_invites.copy_invite_link")}</Button>
-              </CopyToClipboard>
+                {t("my_invites.copy_invite_link")}
+              </Button>
             )}
           </div>
         )}
