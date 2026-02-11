@@ -6,8 +6,18 @@ import type { NextRequest } from "next/server";
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
-  // 跳过验证文件，直接返回
   const pathname = request.nextUrl.pathname;
+  const host = request.headers.get("host") ?? "";
+
+  // 生产环境：将 dreampic.site（无 www）统一重定向到 www.dreampic.site
+  if (host === "dreampic.site") {
+    const url = request.nextUrl.clone();
+    url.host = "www.dreampic.site";
+    url.protocol = "https:";
+    return NextResponse.redirect(url, 301);
+  }
+
+  // 跳过验证文件，直接返回
   if (pathname.startsWith('/baidu_verify') || pathname.startsWith('/yandex_')) {
     return NextResponse.next();
   }

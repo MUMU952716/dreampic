@@ -84,63 +84,61 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
 
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      const base = (process.env.AUTH_URL || baseUrl).replace(/\/$/, "");
+      if (url.startsWith("/")) return `${base}${url}`;
+      try {
+        const u = new URL(url);
+        const sameOrigin = u.origin === new URL(baseUrl).origin || u.origin === new URL(base + "/").origin;
+        if (sameOrigin) return url;
+      } catch {
+        // ignore
+      }
+      return base;
+    },
     async jwt({
       token,
       user,
       account,
-      profile,
     }: {
       token: JWT;
       user?: User;
       account?: Account | null;
       profile?: Profile;
     }) {
-      if (account && user) {
-        console.log("[NextAuth JWT] Processing login for:", user.email);
-
-        // Get client IP
-        let signin_ip = "127.0.0.1";
+      if (account && user?.email) {
         try {
-          signin_ip = await getClientIp();
-          console.log("[NextAuth JWT] Client IP:", signin_ip);
-        } catch (error) {
-          console.error("[NextAuth JWT] Failed to get client IP:", error);
-        }
-
-        // Construct user object for database
-        const dbUser = {
-          uuid: getUuid(),
-          email: user.email!,
-          nickname: user.name || user.email?.split("@")[0] || "User",
-          avatar_url: user.image || "",
-          signin_type: account.type,
-          signin_provider: account.provider,
-          signin_openid: account.providerAccountId,
-          signin_ip: signin_ip,
-          created_at: getIsoTimestr(),
-          locale: "en",
-        };
-
-        try {
-          console.log("[NextAuth JWT] Creating user session...");
-
-          // Store user info in token
+          let signin_ip = "127.0.0.1";
+          try {
+            signin_ip = await getClientIp();
+          } catch {
+            // ignore IP failure, keep default
+          }
+          const now = getIsoTimestr();
           token.user = {
-            uuid: dbUser.uuid,
-            email: dbUser.email,
-            nickname: dbUser.nickname,
-            avatar_url: dbUser.avatar_url,
-            signin_provider: dbUser.signin_provider,
-            created_at: dbUser.created_at,
-            // 保留原始的 name 和 image 用于头像显示
-            name: user.name,
-            image: user.image,
+            uuid: getUuid(),
+            email: user.email,
+            nickname: user.name || user.email.split("@")[0] || "User",
+            avatar_url: user.image || "",
+            signin_provider: account.provider,
+            created_at: now,
+            name: user.name ?? undefined,
+            image: user.image ?? undefined,
           };
         } catch (error) {
-          console.error("[NextAuth JWT] Error saving user:", error);
+          console.error("[NextAuth JWT] Error in jwt callback:", error);
+          token.user = {
+            uuid: getUuid(),
+            email: user.email,
+            nickname: user.name || user.email?.split("@")[0] || "User",
+            avatar_url: user.image || "",
+            signin_provider: account?.provider ?? "google",
+            created_at: getIsoTimestr(),
+            name: user.name ?? undefined,
+            image: user.image ?? undefined,
+          };
         }
       }
-
       return token;
     },
 
@@ -166,6 +164,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: "jwt",
   },
+
+  cookies: (() => {
+    const domain = process.env.AUTH_COOKIE_DOMAIN;
+    if (!domain) return undefined;
+    return {
+      sessionToken: {
+        options: {
+          domain,
+        },
+      },
+    };
+  })(),
 
   secret: process.env.AUTH_SECRET,
   trustHost: true,
