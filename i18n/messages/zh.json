@@ -111,6 +111,9 @@
   "sign_modal": {
     "sign_in_title": "登录",
     "sign_in_description": "登录您的账户",
+    "load_error": "无法加载登录，请重试或刷新页面",
+    "retry": "重试",
+    "refresh_page": "刷新页面",
     "sign_up_title": "注册",
     "sign_up_description": "创建新账户",
     "email_title": "邮箱",

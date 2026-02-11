@@ -6,6 +6,13 @@ import { getUuid } from "@/lib/hash";
 import { getIsoTimestr } from "@/lib/time";
 import { getClientIp } from "@/lib/ip";
 
+if (process.env.AUTH_URL?.replace(/\/$/, "") === "https://dreampic.site") {
+  process.env.AUTH_URL = "https://www.dreampic.site";
+}
+if (process.env.NEXTAUTH_URL?.replace(/\/$/, "") === "https://dreampic.site") {
+  process.env.NEXTAUTH_URL = "https://www.dreampic.site";
+}
+
 const GOOGLE_ONE_TAP_ENABLED = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ONE_TAP_ENABLED === "true";
 const hasGoogleOAuth =
   process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET;

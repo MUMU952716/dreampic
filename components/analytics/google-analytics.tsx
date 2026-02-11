@@ -20,7 +20,6 @@ export default function GoogleAnalytics() {
     }
 
     if (!analyticsId) {
-      console.warn('[GA4] No measurement ID found');
       return;
     }
 

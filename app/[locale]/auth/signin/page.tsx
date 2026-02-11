@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import SignInForm from "@/components/auth/signin-form";
 
 export const dynamic = "force-dynamic";
@@ -11,15 +12,47 @@ const ERROR_MESSAGES: Record<string, string> = {
 };
 
 export default async function SignInPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ locale: string }>;
   searchParams: Promise<{ callbackUrl?: string; error?: string }>;
 }) {
-  const session = await auth();
-  const params = await searchParams;
+  const headersList = await headers();
+  const host = headersList.get("host") ?? "";
+  const hostname = host.split(":")[0].toLowerCase();
+  if (hostname === "dreampic.site") {
+    const { locale } = await params;
+    const sp = await searchParams;
+    const q = new URLSearchParams();
+    if (sp.callbackUrl) q.set("callbackUrl", sp.callbackUrl);
+    if (sp.error) q.set("error", sp.error);
+    const qs = q.toString();
+    redirect(`https://www.dreampic.site/${locale}/auth/signin${qs ? `?${qs}` : ""}`);
+  }
+
+  let session = null;
+  try {
+    session = await auth();
+  } catch (e) {
+    console.error("[SignInPage] auth() failed:", e);
+    const paramsResolved = await searchParams;
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <SignInForm
+          callbackUrl={paramsResolved.callbackUrl}
+          isGoogleEnabled={!!(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET)}
+          loadError
+          siteOrigin={process.env.NEXT_PUBLIC_SITE_URL || process.env.AUTH_URL || ""}
+        />
+      </div>
+    );
+  }
+
+  const paramsResolved = await searchParams;
 
   if (session) {
-    redirect(params.callbackUrl || "/");
+    redirect(paramsResolved.callbackUrl || "/");
   }
 
   const isGoogleEnabled = !!(
@@ -27,7 +60,7 @@ export default async function SignInPage({
     process.env.AUTH_GOOGLE_SECRET
   );
 
-  const errorMessage = params.error ? (ERROR_MESSAGES[params.error] ?? ERROR_MESSAGES.Default) : undefined;
+  const errorMessage = paramsResolved.error ? (ERROR_MESSAGES[paramsResolved.error] ?? ERROR_MESSAGES.Default) : undefined;
   const rawOrigin = process.env.NEXT_PUBLIC_SITE_URL || process.env.AUTH_URL || "";
   const siteOrigin =
     rawOrigin.replace(/\/$/, "") === "https://dreampic.site"
@@ -37,7 +70,7 @@ export default async function SignInPage({
   return (
     <div className="flex min-h-screen items-center justify-center">
       <SignInForm
-        callbackUrl={params.callbackUrl}
+        callbackUrl={paramsResolved.callbackUrl}
         isGoogleEnabled={isGoogleEnabled}
         error={errorMessage}
         siteOrigin={siteOrigin}

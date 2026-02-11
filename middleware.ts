@@ -19,7 +19,12 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(url, isPost ? 308 : 301);
   }
 
-  // 客户端误请求 /en/api/auth/* 时重定向到 /api/auth/*，避免 rewrite 后 NextAuth 仍看到带 locale 的 path 返回 400
+  // /api/auth/* 不经过 next-intl，直接交给 NextAuth，避免 307 等重定向导致 fetch 拿不到 200+JSON
+  if (pathname.startsWith("/api/auth/")) {
+    return NextResponse.next();
+  }
+
+  // 带 locale 的 /en/api/auth/* 用 rewrite 而非 redirect，让客户端直接拿到 200+JSON（如 csrf），不经历 302
   const localeApiAuthMatch = pathname.match(/^\/(en|zh|zh-CN|en-US|zh-TW|zh-HK|ja|ko|ru|fr|de|ar|es|it)\/api\/auth\/(.+)$/);
   if (localeApiAuthMatch) {
     const [, locale, authPath] = localeApiAuthMatch;
@@ -30,7 +35,7 @@ export default function middleware(request: NextRequest) {
     }
     const url = request.nextUrl.clone();
     url.pathname = `/api/auth/${authPath}`;
-    return NextResponse.redirect(url, 302);
+    return NextResponse.rewrite(url);
   }
 
   // Auth 错误页错误拼成 /en/api/auth/error 时会 404，统一重定向到 /en/auth/error

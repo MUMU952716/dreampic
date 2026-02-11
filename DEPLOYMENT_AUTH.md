@@ -11,14 +11,14 @@
 | 变量名 | 说明 | 填写值 |
 |--------|------|--------|
 | `AUTH_SECRET` | NextAuth 加密密钥 | 同 `.env` 中的 `AUTH_SECRET`，或 `openssl rand -base64 32` 生成 |
-| `AUTH_URL` | 站点根地址（必填），不要带尾部 `/` | `https://www.dreampic.site` |
+| `AUTH_URL` | 站点根地址（必填），不要带尾部 `/`；必须用 **www**：`https://www.dreampic.site`，若误填为 `https://dreampic.site` 会导致 `/api/auth/session` 重定向循环（ERR_TOO_MANY_REDIRECTS），代码中已做自动修正 | `https://www.dreampic.site` |
 | `AUTH_GOOGLE_ID` | Google OAuth 客户端 ID | 同 `.env` 中的值 |
 | `AUTH_GOOGLE_SECRET` | Google OAuth 客户端密钥 | 同 `.env` 中的值 |
 | `NEXT_PUBLIC_AUTH_GOOGLE_ENABLED` | 是否启用 Google 登录 | `true` |
 | `NEXT_PUBLIC_AUTH_GOOGLE_ID` | 前端用，与上面 ID 一致 | 同 `AUTH_GOOGLE_ID` |
 | `NEXT_PUBLIC_SITE_URL` | 前端用站点地址（可选） | `https://www.dreampic.site` |
 
-改完环境变量后需 **Redeploy** 一次才会生效。
+改完环境变量后需 **Redeploy** 一次才会生效。若曾填过 `NEXTAUTH_URL`，也请改为 `https://www.dreampic.site`，否则会和 `AUTH_URL` 一样导致重定向循环；代码已对 `AUTH_URL` / `NEXTAUTH_URL` 做自动修正（无 www → 有 www），但**强烈建议在 Vercel 里直接改为 www 并 Redeploy**。
 
 ---
 

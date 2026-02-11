@@ -111,6 +111,9 @@
   "sign_modal": {
     "sign_in_title": "Sign In",
     "sign_in_description": "Sign in to your account",
+    "load_error": "Unable to load sign-in. Please retry or refresh the page.",
+    "retry": "Retry",
+    "refresh_page": "Refresh page",
     "sign_up_title": "Sign Up",
     "sign_up_description": "Create an account",
     "email_title": "Email",
