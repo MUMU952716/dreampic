@@ -22,6 +22,7 @@ export default function SignInForm({
 }) {
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
   const [csrfFailed, setCsrfFailed] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
   const [useCanonicalAction, setUseCanonicalAction] = useState(false);
   const isGoogleEnabled =
     isGoogleEnabledProp ?? process.env.NEXT_PUBLIC_AUTH_GOOGLE_ENABLED === "true";
@@ -36,17 +37,14 @@ export default function SignInForm({
     if (h === CANONICAL_HOST || h === "dreampic.site") {
       setUseCanonicalAction(true);
     }
-    const origin =
-      h === CANONICAL_HOST || h === "dreampic.site"
-        ? `https://${CANONICAL_HOST}`
-        : typeof window !== "undefined"
-          ? window.location.origin
-          : "";
-    const csrfUrl = origin ? `${origin}/api/auth/csrf` : "/api/auth/csrf";
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000);
     setCsrfFailed(false);
-    fetch(csrfUrl, { signal: controller.signal })
+    fetch("/api/auth/csrf", {
+      signal: controller.signal,
+      cache: "no-store",
+      credentials: "same-origin",
+    })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((data) => {
         clearTimeout(timeout);
@@ -61,7 +59,7 @@ export default function SignInForm({
       clearTimeout(timeout);
       controller.abort();
     };
-  }, [siteOrigin]);
+  }, [siteOrigin, retryCount]);
 
   // 只要当前是本站生产域名（www 或 无 www），一律用 www 的绝对地址提交，避免跳到无 www 被 Chrome 拦截
   const formAction =
@@ -105,15 +103,25 @@ export default function SignInForm({
             </form>
           ) : csrfFailed ? (
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">无法加载登录，请刷新页面重试</p>
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full"
-                onClick={() => window.location.reload()}
-              >
-                刷新页面
-              </Button>
+              <p className="text-sm text-muted-foreground">无法加载登录，请重试或刷新页面</p>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="flex-1"
+                  onClick={() => setRetryCount((c) => c + 1)}
+                >
+                  重试
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="flex-1"
+                  onClick={() => window.location.reload()}
+                >
+                  刷新页面
+                </Button>
+              </div>
             </div>
           ) : (
             <Button variant="outline" className="w-full" size="lg" disabled>
