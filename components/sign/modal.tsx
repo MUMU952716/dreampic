@@ -9,14 +9,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useTranslations } from "next-intl";
 import { authEventBus } from "@/lib/auth-event";
 
+const CANONICAL_ORIGIN = "https://www.dreampic.site";
+
 export default function SignModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const t = useTranslations("sign_modal");
 
   // 监听登录事件
@@ -48,19 +48,14 @@ export default function SignModal() {
     };
   }, []);
 
-  const handleGoogleSignIn = async () => {
-    if (typeof window !== "undefined" && window.location.hostname === "dreampic.site") {
-      window.location.href = "https://www.dreampic.site/en/auth/signin";
-      return;
-    }
-    setIsLoading(true);
-    try {
-      await signIn("google", { callbackUrl: "/" });
-    } catch (error) {
-      console.error("Sign in error:", error);
-    } finally {
-      setIsLoading(false);
-    }
+  const handleGoogleSignIn = () => {
+    const origin =
+      typeof window !== "undefined" && window.location.hostname === "dreampic.site"
+        ? CANONICAL_ORIGIN
+        : typeof window !== "undefined"
+          ? window.location.origin
+          : CANONICAL_ORIGIN;
+    window.location.href = `${origin}/en/auth/signin`;
   };
 
   return (
@@ -74,11 +69,10 @@ export default function SignModal() {
           <Button
             variant="outline"
             onClick={handleGoogleSignIn}
-            disabled={isLoading}
             className="w-full"
           >
             <FcGoogle className="mr-2 h-5 w-5" />
-            {isLoading ? t("signing_in") : t("google_sign_in")}
+            {t("google_sign_in")}
           </Button>
         </div>
       </DialogContent>
