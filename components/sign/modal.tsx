@@ -32,9 +32,13 @@ export default function SignModal() {
     };
   }, []);
 
-  // 监听全局登录触发事件
+  // 监听全局登录触发事件；若当前是无 www，直接跳到 www 的登录页
   useEffect(() => {
     const handleOpenSignModal = () => {
+      if (typeof window !== "undefined" && window.location.hostname === "dreampic.site") {
+        window.location.href = "https://www.dreampic.site/en/auth/signin";
+        return;
+      }
       setIsOpen(true);
     };
 
@@ -45,6 +49,10 @@ export default function SignModal() {
   }, []);
 
   const handleGoogleSignIn = async () => {
+    if (typeof window !== "undefined" && window.location.hostname === "dreampic.site") {
+      window.location.href = "https://www.dreampic.site/en/auth/signin";
+      return;
+    }
     setIsLoading(true);
     try {
       await signIn("google", { callbackUrl: "/" });

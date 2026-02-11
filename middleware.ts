@@ -19,6 +19,15 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(url, isPost ? 308 : 301);
   }
 
+  // 客户端误请求 /en/api/auth/* 时会 404（API 在 /api/auth/*），重写到 /api/auth/*
+  const localeApiAuthMatch = pathname.match(/^\/(en|zh|zh-CN|en-US|zh-TW|zh-HK|ja|ko|ru|fr|de|ar|es|it)\/api\/auth\/(.+)$/);
+  if (localeApiAuthMatch) {
+    const [, , authPath] = localeApiAuthMatch;
+    const url = request.nextUrl.clone();
+    url.pathname = `/api/auth/${authPath}`;
+    return NextResponse.rewrite(url);
+  }
+
   // Auth 错误页错误拼成 /en/api/auth/error 时会 404，统一重定向到 /en/auth/error
   const authErrorMatch = pathname.match(/^\/(en|zh|zh-CN|en-US)(\/api\/auth\/error)$/);
   if (authErrorMatch) {

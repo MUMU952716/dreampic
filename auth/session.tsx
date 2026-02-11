@@ -11,5 +11,9 @@ export default function AuthSessionProvider({
   children: ReactNode;
   session?: Session | null;
 }) {
-  return <SessionProvider session={session ?? undefined}>{children}</SessionProvider>;
+  return (
+    <SessionProvider session={session ?? undefined} basePath="/api/auth">
+      {children}
+    </SessionProvider>
+  );
 }
