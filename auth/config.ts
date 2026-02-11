@@ -86,6 +86,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async redirect({ url, baseUrl }) {
       let base = (process.env.AUTH_URL || baseUrl).replace(/\/$/, "");
       if (base === "https://dreampic.site") base = "https://www.dreampic.site";
+      if (url.includes("/api/auth/error") || url.includes("/auth/error")) {
+        try {
+          const u = new URL(url, baseUrl);
+          return `${base}/en/auth/error${u.search}`;
+        } catch {
+          return `${base}/en/auth/error`;
+        }
+      }
       if (url.startsWith("/")) return `${base}${url}`;
       try {
         const u = new URL(url);

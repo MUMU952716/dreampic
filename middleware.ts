@@ -19,6 +19,15 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(url, isPost ? 308 : 301);
   }
 
+  // Auth 错误页错误拼成 /en/api/auth/error 时会 404，统一重定向到 /en/auth/error
+  const authErrorMatch = pathname.match(/^\/(en|zh|zh-CN|en-US)(\/api\/auth\/error)$/);
+  if (authErrorMatch) {
+    const [, locale] = authErrorMatch;
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}/auth/error`;
+    return NextResponse.redirect(url, 302);
+  }
+
   // 跳过验证文件，直接返回
   if (pathname.startsWith('/baidu_verify') || pathname.startsWith('/yandex_')) {
     return NextResponse.next();
