@@ -6,8 +6,9 @@ import { getUuid } from "@/lib/hash";
 import { getIsoTimestr } from "@/lib/time";
 import { getClientIp } from "@/lib/ip";
 
-const GOOGLE_ENABLED = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ENABLED === "true";
 const GOOGLE_ONE_TAP_ENABLED = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ONE_TAP_ENABLED === "true";
+const hasGoogleOAuth =
+  process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -30,7 +31,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
               try {
                 console.log("[Google One Tap] Verifying token...");
-                // Verify the Google ID token
                 const response = await fetch(
                   `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`
                 );
@@ -48,7 +48,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                   return null;
                 }
 
-                // Return user object (will be processed in jwt callback)
                 return {
                   id: payload.sub,
                   email: payload.email,
@@ -65,12 +64,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         ]
       : []),
 
-    // Standard Google OAuth Provider
-    ...(GOOGLE_ENABLED && process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET
+    // Standard Google OAuth：仅根据 AUTH_GOOGLE_ID / AUTH_GOOGLE_SECRET 注册，避免 Vercel 未设 NEXT_PUBLIC 时回调报 "google not found"
+    ...(hasGoogleOAuth
       ? [
           Google({
-            clientId: process.env.AUTH_GOOGLE_ID,
-            clientSecret: process.env.AUTH_GOOGLE_SECRET,
+            clientId: process.env.AUTH_GOOGLE_ID!,
+            clientSecret: process.env.AUTH_GOOGLE_SECRET!,
             authorization: {
               params: {
                 prompt: "consent",
@@ -85,7 +84,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   callbacks: {
     async redirect({ url, baseUrl }) {
-      const base = (process.env.AUTH_URL || baseUrl).replace(/\/$/, "");
+      let base = (process.env.AUTH_URL || baseUrl).replace(/\/$/, "");
+      if (base === "https://dreampic.site") base = "https://www.dreampic.site";
       if (url.startsWith("/")) return `${base}${url}`;
       try {
         const u = new URL(url);

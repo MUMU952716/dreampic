@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { cn } from "@/lib/utils";
 
 const CANONICAL_HOST = "www.dreampic.site";
+const CANONICAL_SIGNIN_ACTION = `https://${CANONICAL_HOST}/api/auth/signin/google`;
 
 export default function SignInForm({
   callbackUrl,
@@ -20,6 +21,7 @@ export default function SignInForm({
   siteOrigin?: string;
 }) {
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
+  const [useCanonicalAction, setUseCanonicalAction] = useState(false);
   const isGoogleEnabled =
     isGoogleEnabledProp ?? process.env.NEXT_PUBLIC_AUTH_GOOGLE_ENABLED === "true";
 
@@ -29,11 +31,23 @@ export default function SignInForm({
       window.location.replace(to);
       return;
     }
+    const h = window.location.hostname;
+    if (h === CANONICAL_HOST || h === "dreampic.site") {
+      setUseCanonicalAction(true);
+    }
     fetch("/api/auth/csrf")
       .then((r) => r.json())
       .then((data) => setCsrfToken(data?.csrfToken ?? null))
       .catch(() => setCsrfToken(null));
-  }, []);
+  }, [siteOrigin]);
+
+  // 只要当前是本站生产域名（www 或 无 www），一律用 www 的绝对地址提交，避免跳到无 www 被 Chrome 拦截
+  const formAction =
+    useCanonicalAction
+      ? CANONICAL_SIGNIN_ACTION
+      : siteOrigin
+        ? `${siteOrigin.replace(/\/$/, "")}/api/auth/signin/google`
+        : "/api/auth/signin/google";
 
   const callback = callbackUrl || "/";
 
@@ -53,7 +67,7 @@ export default function SignInForm({
           csrfToken ? (
             <form
               method="POST"
-              action="/api/auth/signin/google"
+              action={formAction}
               target="_self"
               className="block"
             >

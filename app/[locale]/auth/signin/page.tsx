@@ -28,7 +28,11 @@ export default async function SignInPage({
   );
 
   const errorMessage = params.error ? (ERROR_MESSAGES[params.error] ?? ERROR_MESSAGES.Default) : undefined;
-  const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL || process.env.AUTH_URL || "";
+  const rawOrigin = process.env.NEXT_PUBLIC_SITE_URL || process.env.AUTH_URL || "";
+  const siteOrigin =
+    rawOrigin.replace(/\/$/, "") === "https://dreampic.site"
+      ? "https://www.dreampic.site"
+      : rawOrigin;
 
   return (
     <div className="flex min-h-screen items-center justify-center">

@@ -8,13 +8,15 @@ const intlMiddleware = createMiddleware(routing);
 export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const host = request.headers.get("host") ?? "";
+  const hostname = host.split(":")[0].toLowerCase();
 
-  // 生产环境：将 dreampic.site（无 www）统一重定向到 www.dreampic.site
-  if (host === "dreampic.site") {
+  // 生产环境：将 dreampic.site（无 www）统一重定向到 www.dreampic.site；POST 用 308 保留方法和 body
+  if (hostname === "dreampic.site") {
     const url = request.nextUrl.clone();
     url.host = "www.dreampic.site";
     url.protocol = "https:";
-    return NextResponse.redirect(url, 301);
+    const isPost = request.method === "POST";
+    return NextResponse.redirect(url, isPost ? 308 : 301);
   }
 
   // 跳过验证文件，直接返回
@@ -77,6 +79,7 @@ export const config = {
   matcher: [
     "/",
     "/(en|en-US|zh|zh-CN|zh-TW|zh-HK|zh-MO|ja|ko|ru|fr|de|ar|es|it)/:path*",
+    "/api/auth/:path*",
     "/((?!privacy-policy|terms-of-service|api|_next|_vercel|baidu_verify|yandex_|.*\\..*).*)",
   ],
 };
