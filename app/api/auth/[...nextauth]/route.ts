@@ -48,19 +48,13 @@ async function fixRedirectResponse(request: NextRequest, response: Response): Pr
   return response;
 }
 
-async function wrapGet(
-  req: NextRequest,
-  context: { params: Promise<Record<string, string | string[]>> }
-) {
-  const res = await handlers.GET(req, context);
+async function wrapGet(req: NextRequest) {
+  const res = await handlers.GET(req);
   return fixRedirectResponse(req, res);
 }
 
-async function wrapPost(
-  req: NextRequest,
-  context: { params: Promise<Record<string, string | string[]>> }
-) {
-  const res = await handlers.POST(req, context);
+async function wrapPost(req: NextRequest) {
+  const res = await handlers.POST(req);
   return fixRedirectResponse(req, res);
 }
 
