@@ -8,7 +8,7 @@ const EVOLINK_VEO_MODELS = [
     maxDuration: 8,
     supportedResolutions: ['720p', '1080p', '4k'],
     supportedAspectRatios: ['16:9', '9:16', 'auto'],
-    supportedAspectDuration: [4, 6, 8],
+    supportedAspectDuration: [8],
   },
 ];
 

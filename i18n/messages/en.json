@@ -843,7 +843,9 @@
       "generating": "Generating...",
       "resultPlaceholder": "Generated video will show here",
       "loadFailedHint": "Video failed to load. Try downloading or refreshing the page.",
-      "retryWithProxy": "Load via proxy"
+      "retryWithProxy": "Load via proxy",
+      "errorTitle": "Generation Failed",
+      "dismissError": "Dismiss"
     },
     "imageToVideo": {
       "referenceImage": "Reference Image",

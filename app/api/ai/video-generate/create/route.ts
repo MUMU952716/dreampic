@@ -31,12 +31,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const durationNum = parseInt(String(duration), 10) || 4;
     const requestBody: Record<string, unknown> = {
       model: model === 'veo3.1-fast' ? 'veo3.1-fast' : 'veo3.1-fast',
       prompt: prompt.trim(),
       aspect_ratio: aspectRatio === '9:16' ? '9:16' : aspectRatio === '16:9' ? '16:9' : 'auto',
       quality: resolution === '4k' ? '4k' : resolution === '1080p' ? '1080p' : '720p',
       enhance_prompt: true,
+      duration: durationNum,
+      generate_audio: Boolean(generateAudio),
     };
 
     if (imageUrl && typeof imageUrl === 'string' && imageUrl.trim()) {

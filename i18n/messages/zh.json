@@ -845,7 +845,9 @@
       "generating": "生成中...",
       "resultPlaceholder": "生成的视频将显示在这里",
       "loadFailedHint": "视频加载失败，可尝试下载或刷新页面。",
-      "retryWithProxy": "使用代理加载"
+      "retryWithProxy": "使用代理加载",
+      "errorTitle": "生成失败",
+      "dismissError": "关闭"
     },
     "imageToVideo": {
       "referenceImage": "参考图片",

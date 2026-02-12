@@ -121,6 +121,7 @@ export default function VideoGeneratePage() {
   const [t2vTaskId, setT2vTaskId] = useState<string | null>(null);
   const [t2vProgress, setT2vProgress] = useState(0);
   const [t2vVideoError, setT2vVideoError] = useState(false);
+  const [t2vErrorMsg, setT2vErrorMsg] = useState<string | null>(null);
   const [isT2vTranslateDialogOpen, setIsT2vTranslateDialogOpen] = useState(false);
   const [t2vTargetLanguage, setT2vTargetLanguage] = useState("en");
   const [isT2vProcessing, setIsT2vProcessing] = useState(false);
@@ -142,6 +143,7 @@ export default function VideoGeneratePage() {
   const [i2vTaskId, setI2vTaskId] = useState<string | null>(null);
   const [i2vProgress, setI2vProgress] = useState(0);
   const [i2vVideoError, setI2vVideoError] = useState(false);
+  const [i2vErrorMsg, setI2vErrorMsg] = useState<string | null>(null);
   const [isI2vTranslateDialogOpen, setIsI2vTranslateDialogOpen] = useState(false);
   const [i2vTargetLanguage, setI2vTargetLanguage] = useState("en");
   const [isI2vProcessing, setIsI2vProcessing] = useState(false);
@@ -529,9 +531,9 @@ export default function VideoGeneratePage() {
           } else if (status === 'failed') {
             console.log('[T2V] ❌ 视频生成失败, error:', result.data.error);
             setIsGeneratingT2V(false);
-            // 优先使用 error 字段，如果没有则使用 errorMessage，最后使用默认消息
             const errorMsg = result.data.error || result.data.errorMessage || t('toast.videoGenerateFailed');
-            toast.error(errorMsg);
+            setT2vErrorMsg(errorMsg);
+            toast.error(errorMsg, { duration: 8000 });
             return;
           } else if (status === 'processing' || status === 'pending') {
             console.log('[T2V] ⏳ 继续轮询...', `attempts: ${attempts + 1}/${maxAttempts}`);
@@ -540,18 +542,23 @@ export default function VideoGeneratePage() {
               setTimeout(poll, 5000);
             } else {
               setIsGeneratingT2V(false);
-              toast.error(t('toast.generateTimeout'));
+              const err = t('toast.generateTimeout');
+              setT2vErrorMsg(err);
+              toast.error(err, { duration: 8000 });
             }
           } else {
-            // 未知状态，停止轮询
             console.log('[T2V] ⚠️ 未知状态:', status);
             setIsGeneratingT2V(false);
-            toast.error(`${t('toast.unknownTaskStatus')}: ${status}`);
+            const err = `${t('toast.unknownTaskStatus')}: ${status}`;
+            setT2vErrorMsg(err);
+            toast.error(err, { duration: 8000 });
           }
         } else {
           console.log('[T2V] ❌ API 返回错误');
           setIsGeneratingT2V(false);
-          toast.error(result.message || t('toast.queryStatusFailed'));
+          const err = result.message || t('toast.queryStatusFailed');
+          setT2vErrorMsg(err);
+          toast.error(err, { duration: 8000 });
         }
       } catch (error) {
         console.error('[T2V] 查询状态异常:', error);
@@ -560,7 +567,9 @@ export default function VideoGeneratePage() {
           setTimeout(poll, 5000);
         } else {
           setIsGeneratingT2V(false);
-          toast.error(t('toast.queryStatusFailed'));
+          const err = t('toast.queryStatusFailed');
+          setT2vErrorMsg(err);
+          toast.error(err, { duration: 8000 });
         }
       }
     };
@@ -608,9 +617,9 @@ export default function VideoGeneratePage() {
           } else if (status === 'failed') {
             console.log('[I2V] ❌ 视频生成失败, error:', result.data.error);
             setIsGeneratingI2V(false);
-            // 优先使用 error 字段，如果没有则使用 errorMessage，最后使用默认消息
             const errorMsg = result.data.error || result.data.errorMessage || t('toast.videoGenerateFailed');
-            toast.error(errorMsg);
+            setI2vErrorMsg(errorMsg);
+            toast.error(errorMsg, { duration: 8000 });
             return;
           } else if (status === 'processing' || status === 'pending') {
             console.log('[I2V] ⏳ 继续轮询...', `attempts: ${attempts + 1}/${maxAttempts}`);
@@ -619,18 +628,23 @@ export default function VideoGeneratePage() {
               setTimeout(poll, 5000);
             } else {
               setIsGeneratingI2V(false);
-              toast.error(t('toast.generateTimeout'));
+              const err = t('toast.generateTimeout');
+              setI2vErrorMsg(err);
+              toast.error(err, { duration: 8000 });
             }
           } else {
-            // 未知状态，停止轮询
             console.log('[I2V] ⚠️ 未知状态:', status);
             setIsGeneratingI2V(false);
-            toast.error(`${t('toast.unknownTaskStatus')}: ${status}`);
+            const err = `${t('toast.unknownTaskStatus')}: ${status}`;
+            setI2vErrorMsg(err);
+            toast.error(err, { duration: 8000 });
           }
         } else {
           console.log('[I2V] ❌ API 返回错误');
           setIsGeneratingI2V(false);
-          toast.error(result.message || t('toast.queryStatusFailed'));
+          const err = result.message || t('toast.queryStatusFailed');
+          setI2vErrorMsg(err);
+          toast.error(err, { duration: 8000 });
         }
       } catch (error) {
         console.error('[I2V] 查询状态异常:', error);
@@ -639,7 +653,9 @@ export default function VideoGeneratePage() {
           setTimeout(poll, 5000);
         } else {
           setIsGeneratingI2V(false);
-          toast.error(t('toast.queryStatusFailed'));
+          const err = t('toast.queryStatusFailed');
+          setI2vErrorMsg(err);
+          toast.error(err, { duration: 8000 });
         }
       }
     };
@@ -667,6 +683,7 @@ export default function VideoGeneratePage() {
     setGeneratedT2VVideo(null);
     setT2vTaskId(null);
     setT2vProgress(0);
+    setT2vErrorMsg(null);
 
     try {
       console.log('[T2V] 开始生成视频:', {
@@ -701,12 +718,16 @@ export default function VideoGeneratePage() {
         pollT2VTaskStatus(taskId);
       } else {
         setIsGeneratingT2V(false);
-        toast.error(result.message || t('toast.taskCreateFailed'));
+        const err = result.message || t('toast.taskCreateFailed');
+        setT2vErrorMsg(err);
+        toast.error(err, { duration: 8000 });
       }
     } catch (error) {
       console.error('[T2V] 生成异常:', error);
       setIsGeneratingT2V(false);
-      toast.error(t('toast.generateFailed'));
+      const err = error instanceof Error ? error.message : t('toast.generateFailed');
+      setT2vErrorMsg(err);
+      toast.error(err, { duration: 8000 });
     }
   };
 
@@ -735,6 +756,7 @@ export default function VideoGeneratePage() {
     setGeneratedI2VVideo(null);
     setI2vTaskId(null);
     setI2vProgress(0);
+    setI2vErrorMsg(null);
 
     try {
       console.log('[I2V] 开始生成视频:', {
@@ -771,12 +793,16 @@ export default function VideoGeneratePage() {
         pollI2VTaskStatus(taskId);
       } else {
         setIsGeneratingI2V(false);
-        toast.error(result.message || t('toast.taskCreateFailed'));
+        const err = result.message || t('toast.taskCreateFailed');
+        setI2vErrorMsg(err);
+        toast.error(err, { duration: 8000 });
       }
     } catch (error) {
       console.error('[I2V] 生成异常:', error);
       setIsGeneratingI2V(false);
-      toast.error(t('toast.generateFailed'));
+      const err = error instanceof Error ? error.message : t('toast.generateFailed');
+      setI2vErrorMsg(err);
+      toast.error(err, { duration: 8000 });
     }
   };
 
@@ -1017,7 +1043,7 @@ export default function VideoGeneratePage() {
                     <Button
                       onClick={handleT2VGenerate}
                       disabled={!t2vPrompt || isGeneratingT2V}
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:transform-none transition-all rounded-lg font-medium"
+                      className="w-full !bg-blue-600 hover:!bg-blue-700"
                       size="lg"
                     >
                       {isGeneratingT2V ? `${t('textToVideo.generating')} ${t2vProgress}%` : t('textToVideo.generateButton')}
@@ -1068,6 +1094,21 @@ export default function VideoGeneratePage() {
                             <p className="text-xs text-muted-foreground mt-1">{t2vProgress}%</p>
                           </div>
                         )}
+                      </div>
+                    ) : t2vErrorMsg ? (
+                      <div className="w-full max-w-md mx-auto text-center">
+                        <div className="rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-6">
+                          <p className="text-red-600 dark:text-red-400 font-medium mb-2">{t('textToVideo.errorTitle')}</p>
+                          <p className="text-sm text-red-700 dark:text-red-300 mb-4 break-words">{t2vErrorMsg}</p>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setT2vErrorMsg(null)}
+                            className="border-red-300 text-red-700 hover:bg-red-50 dark:border-red-700 dark:text-red-300 dark:hover:bg-red-900/30"
+                          >
+                            {t('textToVideo.dismissError')}
+                          </Button>
+                        </div>
                       </div>
                     ) : generatedT2VVideo ? (
                       <div className="w-full">
@@ -1375,7 +1416,7 @@ export default function VideoGeneratePage() {
                     <Button
                       onClick={handleI2VGenerate}
                       disabled={!i2vPrompt || !referenceImageUrl || isGeneratingI2V || isUploadingImage}
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:transform-none transition-all rounded-lg font-medium"
+                      className="w-full !bg-blue-600 hover:!bg-blue-700"
                       size="lg"
                     >
                       {isUploadingImage ? `${t('imageToVideo.uploading')} ${uploadProgress}%` : isGeneratingI2V ? `${t('imageToVideo.generating')} ${i2vProgress}%` : t('imageToVideo.generateButton')}
@@ -1426,6 +1467,21 @@ export default function VideoGeneratePage() {
                             <p className="text-xs text-muted-foreground mt-1">{i2vProgress}%</p>
                           </div>
                         )}
+                      </div>
+                    ) : i2vErrorMsg ? (
+                      <div className="w-full max-w-md mx-auto text-center">
+                        <div className="rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-6">
+                          <p className="text-red-600 dark:text-red-400 font-medium mb-2">{t('textToVideo.errorTitle')}</p>
+                          <p className="text-sm text-red-700 dark:text-red-300 mb-4 break-words">{i2vErrorMsg}</p>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setI2vErrorMsg(null)}
+                            className="border-red-300 text-red-700 hover:bg-red-50 dark:border-red-700 dark:text-red-300 dark:hover:bg-red-900/30"
+                          >
+                            {t('textToVideo.dismissError')}
+                          </Button>
+                        </div>
                       </div>
                     ) : generatedI2VVideo ? (
                       <div className="w-full">

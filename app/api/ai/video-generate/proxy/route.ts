@@ -1,4 +1,3 @@
-import { Readable } from 'stream';
 import { NextRequest, NextResponse } from 'next/server';
 import { evolinkAxios } from '@/lib/axios-config';
 import { log, logError } from '@/lib/logger';
@@ -30,50 +29,12 @@ export async function GET(request: NextRequest) {
     }
 
     const range = request.headers.get('range');
-    const headers: Record<string, string> = range ? { Range: range } : {};
-
-    try {
-      const videoRes = await evolinkAxios.get(videoUrl, {
-        responseType: 'stream',
-        timeout: 300000,
-        headers,
-        validateStatus: (s) => s >= 200 && s < 400,
-      });
-
-      const status = videoRes.status;
-      if (status >= 400) {
-        logError('[Video Proxy] Evolink 拉取失败:', status, videoUrl);
-        return new NextResponse(null, { status });
-      }
-
-      const contentType = (videoRes.headers['content-type'] as string) || 'video/mp4';
-      const resHeaders: Record<string, string> = {
-        'Content-Type': contentType,
-        'Cache-Control': 'public, max-age=86400',
-      };
-      const contentLength = videoRes.headers['content-length'];
-      if (contentLength) resHeaders['Content-Length'] = String(contentLength);
-      const acceptRanges = videoRes.headers['accept-ranges'];
-      if (acceptRanges) resHeaders['Accept-Ranges'] = String(acceptRanges);
-      if (status === 206 && videoRes.headers['content-range']) {
-        resHeaders['Content-Range'] = String(videoRes.headers['content-range']);
-      }
-
-      const webStream = Readable.toWeb(videoRes.data as NodeJS.ReadableStream);
-      return new NextResponse(webStream as unknown as ReadableStream, {
-        status,
-        headers: resHeaders,
-      });
-    } catch (axiosErr) {
-      logError('[Video Proxy] axios 流式拉取失败，尝试 fetch:', axiosErr);
-    }
-
     const apiKey = process.env.EVOLINK_API_KEY;
     const fetchHeaders: Record<string, string> = apiKey ? { Authorization: `Bearer ${apiKey}` } : {};
     if (range) fetchHeaders['Range'] = range;
     const videoRes = await fetch(videoUrl, { headers: fetchHeaders });
     if (!videoRes.ok) {
-      logError('[Video Proxy] fetch 拉取失败:', videoRes.status, videoUrl);
+      logError('[Video Proxy] fetch 拉取失败:', { status: videoRes.status, videoUrl });
       return new NextResponse(null, { status: videoRes.status });
     }
     const contentType = videoRes.headers.get('content-type') || 'video/mp4';
