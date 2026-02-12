@@ -1086,6 +1086,20 @@ export default function VideoGeneratePage() {
                             {t('textToVideo.loadFailedHint')}
                           </p>
                         )}
+                        {t2vVideoError && t2vTaskId && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="mt-2"
+                            onClick={() => {
+                              const proxyUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/api/ai/video-generate/proxy?taskId=${encodeURIComponent(t2vTaskId)}`;
+                              setGeneratedT2VVideo(proxyUrl);
+                              setT2vVideoError(false);
+                            }}
+                          >
+                            {t('textToVideo.retryWithProxy')}
+                          </Button>
+                        )}
                         <div className="mt-4 flex gap-2 justify-center">
                           <Button
                             onClick={() => window.open(generatedT2VVideo, '_blank')}
@@ -1429,6 +1443,20 @@ export default function VideoGeneratePage() {
                           <p className="mt-2 text-sm text-amber-600 dark:text-amber-400 text-center">
                             {t('textToVideo.loadFailedHint')}
                           </p>
+                        )}
+                        {i2vVideoError && i2vTaskId && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="mt-2"
+                            onClick={() => {
+                              const proxyUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/api/ai/video-generate/proxy?taskId=${encodeURIComponent(i2vTaskId)}`;
+                              setGeneratedI2VVideo(proxyUrl);
+                              setI2vVideoError(false);
+                            }}
+                          >
+                            {t('textToVideo.retryWithProxy')}
+                          </Button>
                         )}
                         <div className="mt-4 flex gap-2 justify-center">
                           <Button

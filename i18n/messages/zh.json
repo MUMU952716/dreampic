@@ -844,7 +844,8 @@
       "generateButton": "生成视频",
       "generating": "生成中...",
       "resultPlaceholder": "生成的视频将显示在这里",
-      "loadFailedHint": "视频加载失败，可尝试下载或刷新页面。"
+      "loadFailedHint": "视频加载失败，可尝试下载或刷新页面。",
+      "retryWithProxy": "使用代理加载"
     },
     "imageToVideo": {
       "referenceImage": "参考图片",

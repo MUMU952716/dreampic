@@ -842,7 +842,8 @@
       "generateButton": "Generate Video",
       "generating": "Generating...",
       "resultPlaceholder": "Generated video will show here",
-      "loadFailedHint": "Video failed to load. Try downloading or refreshing the page."
+      "loadFailedHint": "Video failed to load. Try downloading or refreshing the page.",
+      "retryWithProxy": "Load via proxy"
     },
     "imageToVideo": {
       "referenceImage": "Reference Image",
