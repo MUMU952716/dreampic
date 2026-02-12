@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 56" width="260" height="56">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&amp;display=swap');</style>
+  </defs>
+  <!-- 雪山：参照图2，底边严格对齐文字基线 y=52（先 scale 再 translate 使底边落 52） -->
+  <g transform="translate(0, -7.4) scale(1.35)">
+    <path d="M4 44 L25 8 L46 44 Z" fill="#1e40af"/>
+    <path d="M25 8 L18 16 L14 14 L16 20 L12 24 L20 26 L30 26 L38 24 L34 20 L36 14 L32 16 Z" fill="#60a5fa"/>
+    <circle cx="14" cy="34" r="2" fill="#fff"/>
+    <circle cx="22" cy="38" r="1.8" fill="#fff"/>
+    <circle cx="28" cy="32" r="2.2" fill="#fff"/>
+    <circle cx="34" cy="36" r="1.6" fill="#fff"/>
+    <circle cx="38" cy="30" r="2" fill="#fff"/>
+    <circle cx="18" cy="28" r="1.5" fill="#fff"/>
+    <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+  </g>
+  <!-- 文字：基线 y=52，与图2 一致图标底边与文字底一条线 -->
+  <text x="62" y="52" font-family="'Dancing Script', cursive" font-size="26" font-weight="600" fill="#1e3a5f">DreamPic</text>
+  <circle cx="136" cy="48" r="2.5" fill="#60a5fa"/>
+</svg>

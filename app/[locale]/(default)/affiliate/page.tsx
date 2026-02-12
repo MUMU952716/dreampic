@@ -14,7 +14,7 @@ export default function AffiliatePage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Affiliate Program</h1>
             <p className="text-xl text-muted-foreground">
-              Earn recurring commissions by promoting Pixmind
+              Earn recurring commissions by promoting DreamPic
             </p>
           </div>
 
@@ -143,13 +143,13 @@ export default function AffiliatePage() {
                   <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-xs">3</span>
                   </div>
-                  <span className="text-muted-foreground">How you plan to promote Pixmind</span>
+                  <span className="text-muted-foreground">How you plan to promote DreamPic</span>
                 </li>
               </ul>
               <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 w-full md:w-auto">
-                <a href="mailto:pixmind.service@aimix.pro">
+                <a href="mailto:contact@dreampic.site">
                   <Mail className="h-5 w-5 mr-2" />
-                  Apply Now: pixmind.service@aimix.pro
+                  Apply Now: contact@dreampic.site
                 </a>
               </Button>
               <p className="text-sm text-muted-foreground mt-4">

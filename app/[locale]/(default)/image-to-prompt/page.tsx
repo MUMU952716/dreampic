@@ -213,7 +213,7 @@ export default function ImageToPromptPage() {
   // Prevent hydration mismatch by not rendering dynamic content until mounted
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-purple-50/20 dark:to-purple-950/10">
+      <div className="min-h-screen bg-gradient-to-b from-background to-blue-50/20 dark:to-blue-950/10">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold mb-4 text-foreground">{t("title")}</h1>
@@ -223,7 +223,7 @@ export default function ImageToPromptPage() {
           </div>
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-center py-20">
-              <Loader2 className="h-8 w-8 animate-spin text-purple-600" />
+              <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
             </div>
           </div>
         </div>
@@ -232,7 +232,7 @@ export default function ImageToPromptPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-purple-50/20 dark:to-purple-950/10">
+    <div className="min-h-screen bg-gradient-to-b from-background to-blue-50/20 dark:to-blue-950/10">
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 text-foreground">{t("title")}</h1>
@@ -248,14 +248,14 @@ export default function ImageToPromptPage() {
               <TabsList className="bg-card p-1 border border-border">
                 <TabsTrigger
                   value="image-to-prompt"
-                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all flex items-center gap-2"
+                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all flex items-center gap-2"
                 >
                   <Image className="h-4 w-4" />
                   {t("tabs.imageToPrompt")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="text-to-prompt"
-                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all flex items-center gap-2"
+                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all flex items-center gap-2"
                   onClick={() => router.push(`/${locale}/text-to-prompt`)}
                 >
                   <FileText className="h-4 w-4" />
@@ -269,14 +269,14 @@ export default function ImageToPromptPage() {
           <div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                  <div className="border-2 border-dashed border-purple-300 dark:border-purple-700 rounded-lg p-4 h-[280px] flex flex-col">
+                  <div className="border-2 border-dashed border-blue-300 dark:border-blue-700 rounded-lg p-4 h-[280px] flex flex-col">
                     {/* Upload Method Tabs - Inside Upload Box */}
                     <div className="flex gap-3 mb-4">
                       <button
                         onClick={() => setUploadMethod("upload")}
                         className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
                           uploadMethod === "upload"
-                            ? "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 font-medium"
+                            ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium"
                             : "text-muted-foreground hover:text-foreground"
                         }`}
                       >
@@ -286,7 +286,7 @@ export default function ImageToPromptPage() {
                         onClick={() => setUploadMethod("url")}
                         className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
                           uploadMethod === "url"
-                            ? "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 font-medium"
+                            ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium"
                             : "text-muted-foreground hover:text-foreground"
                         }`}
                       >
@@ -303,7 +303,7 @@ export default function ImageToPromptPage() {
                             onDragOver={handleDragOver}
                             onDrop={handleDrop}
                           >
-                            <Upload className="h-10 w-10 mx-auto mb-3 text-purple-400" />
+                            <Upload className="h-10 w-10 mx-auto mb-3 text-blue-400" />
                             <p className="text-sm font-medium mb-1">{t("upload.dragDrop")}</p>
                             <p className="text-xs text-muted-foreground">{t("upload.fileFormat")}</p>
                           </div>
@@ -317,7 +317,7 @@ export default function ImageToPromptPage() {
                         </label>
                       ) : (
                         <div className="w-full px-4">
-                          <Image className="h-10 w-10 mx-auto mb-3 text-purple-400" />
+                          <Image className="h-10 w-10 mx-auto mb-3 text-blue-400" />
                           <p className="text-sm font-medium mb-3 text-center">{t("upload.enterUrl")}</p>
                           <input
                             type="text"
@@ -334,7 +334,7 @@ export default function ImageToPromptPage() {
                           <Button
                             size="sm"
                             variant="outline"
-                            className="w-full border-purple-300 text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                            className="w-full border-blue-300 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                             onClick={handleLoadImageUrl}
                           >
                             {t("upload.loadUrl")}
@@ -386,11 +386,11 @@ export default function ImageToPromptPage() {
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-foreground mb-4">{t("models.selectTitle")}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <Card className={`p-4 cursor-pointer border-2 transition-all relative ${selectedModel === 'normal' ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20' : 'hover:border-purple-300'
+                <Card className={`p-4 cursor-pointer border-2 transition-all relative ${selectedModel === 'normal' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'hover:border-blue-300'
                   }`} onClick={() => setSelectedModel('normal')}>
                   {selectedModel === 'normal' && (
                     <div className="absolute top-3 right-3">
-                      <Check className="h-5 w-5 text-purple-600" />
+                      <Check className="h-5 w-5 text-blue-600" />
                     </div>
                   )}
                   <h4 className="font-semibold text-foreground mb-2">{t("models.generalTitle")}</h4>
@@ -399,11 +399,11 @@ export default function ImageToPromptPage() {
                   </p>
                 </Card>
 
-                <Card className={`p-4 cursor-pointer border-2 transition-all relative ${selectedModel === 'flux' ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20' : 'hover:border-purple-300'
+                <Card className={`p-4 cursor-pointer border-2 transition-all relative ${selectedModel === 'flux' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'hover:border-blue-300'
                   }`} onClick={() => setSelectedModel('flux')}>
                   {selectedModel === 'flux' && (
                     <div className="absolute top-3 right-3">
-                      <Check className="h-5 w-5 text-purple-600" />
+                      <Check className="h-5 w-5 text-blue-600" />
                     </div>
                   )}
                   <h4 className="font-semibold text-foreground mb-2">{t("models.fluxTitle")}</h4>
@@ -412,11 +412,11 @@ export default function ImageToPromptPage() {
                   </p>
                 </Card>
 
-                <Card className={`p-4 cursor-pointer border-2 transition-all relative ${selectedModel === 'midjouney' ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20' : 'hover:border-purple-300'
+                <Card className={`p-4 cursor-pointer border-2 transition-all relative ${selectedModel === 'midjouney' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'hover:border-blue-300'
                   }`} onClick={() => setSelectedModel('midjouney')}>
                   {selectedModel === 'midjouney' && (
                     <div className="absolute top-3 right-3">
-                      <Check className="h-5 w-5 text-purple-600" />
+                      <Check className="h-5 w-5 text-blue-600" />
                     </div>
                   )}
                   <h4 className="font-semibold text-foreground mb-2">{t("models.midjourneyTitle")}</h4>
@@ -425,11 +425,11 @@ export default function ImageToPromptPage() {
                   </p>
                 </Card>
 
-                <Card className={`p-4 cursor-pointer border-2 transition-all relative ${selectedModel === 'stableDiffusion' ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20' : 'hover:border-purple-300'
+                <Card className={`p-4 cursor-pointer border-2 transition-all relative ${selectedModel === 'stableDiffusion' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'hover:border-blue-300'
                   }`} onClick={() => setSelectedModel('stableDiffusion')}>
                   {selectedModel === 'stableDiffusion' && (
                     <div className="absolute top-3 right-3">
-                      <Check className="h-5 w-5 text-purple-600" />
+                      <Check className="h-5 w-5 text-blue-600" />
                     </div>
                   )}
                   <h4 className="font-semibold text-foreground mb-2">{t("models.stableDiffusionTitle")}</h4>
@@ -448,7 +448,7 @@ export default function ImageToPromptPage() {
                     <select
                       value={promptLanguage}
                       onChange={(e) => setPromptLanguage(e.target.value)}
-                      className="px-4 py-2.5 border-2 border-border rounded-lg bg-card text-foreground focus:outline-none focus:border-purple-500 transition-colors max-w-[300px]"
+                      className="px-4 py-2.5 border-2 border-border rounded-lg bg-card text-foreground focus:outline-none focus:border-blue-500 transition-colors max-w-[300px]"
                     >
                       <option value="en">English</option>
                       <option value="es">Español</option>
@@ -480,7 +480,7 @@ export default function ImageToPromptPage() {
               <div className="mt-8 flex flex-col md:flex-row gap-4 items-center justify-center">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8"
                   onClick={handleGeneratePrompt}
                   disabled={isGenerating || (!selectedImage && !imagePreview)}
                 >
@@ -496,7 +496,7 @@ export default function ImageToPromptPage() {
 
                 <Button
                   variant="link"
-                  className="text-purple-600"
+                  className="text-blue-600"
                   onClick={() => setShowHistory(true)}
                 >
                   {t("generate.viewHistory")}
@@ -504,7 +504,7 @@ export default function ImageToPromptPage() {
               </div>
 
               {/* Generated Prompt Output Box */}
-              <div className="mt-8 border-2 border-purple-300 dark:border-purple-700 rounded-lg p-6 min-h-[200px]">
+              <div className="mt-8 border-2 border-blue-300 dark:border-blue-700 rounded-lg p-6 min-h-[200px]">
                 <div className="flex justify-between items-start mb-4">
                   <p className="text-muted-foreground">
                     {generatedPrompt ? "" : t("result.placeholder")}
@@ -532,7 +532,7 @@ export default function ImageToPromptPage() {
             <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-2">
               {t("cta.text")}{" "}
-              <Link href={`/${locale}/text-to-prompt`} className="text-purple-600 hover:underline font-medium">
+              <Link href={`/${locale}/text-to-prompt`} className="text-blue-600 hover:underline font-medium">
                 {t("cta.link")}
               </Link>
             </p>

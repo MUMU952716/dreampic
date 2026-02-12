@@ -16,7 +16,7 @@ export default function Stats({ section }: { section: SectionType }) {
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
       
       {/* 装饰性元素 */}
-      <div className="absolute top-1/3 left-10 w-32 h-32 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full blur-2xl animate-pulse" />
+      <div className="absolute top-1/3 left-10 w-32 h-32 bg-gradient-to-r from-indigo-400/20 to-blue-400/20 rounded-full blur-2xl animate-pulse" />
       <div className="absolute bottom-1/3 right-10 w-40 h-40 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-2xl animate-pulse animation-delay-600" />
       
       <div className="container relative z-10 flex flex-col items-center gap-6">
@@ -56,7 +56,7 @@ export default function Stats({ section }: { section: SectionType }) {
                   
                   {/* 数字显示 */}
                   <div className="relative mb-4">
-                    <p className="text-6xl lg:text-7xl font-bold bg-gradient-to-br from-indigo-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
+                    <p className="text-6xl lg:text-7xl font-bold bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
                       {item.label}
                     </p>
                     {/* 数字光晕效果 */}
@@ -71,7 +71,7 @@ export default function Stats({ section }: { section: SectionType }) {
                 </div>
                 
                 {/* 悬停效果 */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-400/0 via-purple-400/0 to-cyan-400/0 group-hover:from-indigo-400/5 group-hover:via-purple-400/5 group-hover:to-cyan-400/5 transition-all duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-400/0 via-blue-400/0 to-cyan-400/0 group-hover:from-indigo-400/5 group-hover:via-blue-400/5 group-hover:to-cyan-400/5 transition-all duration-500" />
               </div>
             );
           })}

@@ -25,7 +25,7 @@ export default function FAQ({ section }: { section: SectionType }) {
       {/* 现代背景 */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50/80 via-blue-50/40 to-indigo-50/80 dark:from-gray-900 dark:via-slate-900/80 dark:to-indigo-950/50" />
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/15 to-indigo-400/15 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-indigo-400/15 to-purple-400/15 rounded-full blur-3xl animate-pulse animation-delay-400" />
+      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-indigo-400/15 to-blue-400/15 rounded-full blur-3xl animate-pulse animation-delay-400" />
       
       <div className="container relative z-10">
         <div className="text-center animate-fade-in-up">
@@ -74,7 +74,7 @@ export default function FAQ({ section }: { section: SectionType }) {
                   isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 } overflow-hidden`}>
                   <div className="px-6 pb-6 pl-18">
-                    <div className="w-full h-px bg-gradient-to-r from-blue-200/50 via-indigo-200/50 to-purple-200/50 dark:from-blue-700/50 dark:via-indigo-700/50 dark:to-purple-700/50 mb-4" />
+                    <div className="w-full h-px bg-gradient-to-r from-blue-200/50 via-indigo-200/50 to-blue-200/50 dark:from-blue-700/50 dark:via-indigo-700/50 dark:to-blue-700/50 mb-4" />
                     <p className="text-muted-foreground/90 leading-relaxed">
                       {item.description}
                     </p>
@@ -82,7 +82,7 @@ export default function FAQ({ section }: { section: SectionType }) {
                 </div>
                 
                 {/* 悬停效果 */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/0 via-indigo-400/0 to-purple-400/0 group-hover:from-blue-400/5 group-hover:via-indigo-400/5 group-hover:to-purple-400/5 transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/0 via-indigo-400/0 to-blue-400/0 group-hover:from-blue-400/5 group-hover:via-indigo-400/5 group-hover:to-blue-400/5 transition-all duration-500 pointer-events-none" />
               </div>
             );
           })}

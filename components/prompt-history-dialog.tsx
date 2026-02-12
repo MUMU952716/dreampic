@@ -153,7 +153,7 @@ export function PromptHistoryDialog({ open, onOpenChange }: PromptHistoryDialogP
                   {shouldTruncate && (
                     <button
                       onClick={() => toggleExpand(item.id)}
-                      className="text-sm text-purple-600 hover:text-purple-700 mt-2 flex items-center gap-1"
+                      className="text-sm text-blue-600 hover:text-blue-700 mt-2 flex items-center gap-1"
                     >
                       {isExpanded ? '▼ Collapse' : '▶ Expand'}
                     </button>

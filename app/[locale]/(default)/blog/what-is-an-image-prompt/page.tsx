@@ -107,7 +107,7 @@ export default function WhatIsAnImagePromptPage() {
 
                 <Card className="p-6">
                   <h3 className="text-xl font-semibold mb-3 flex items-center gap-2 text-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-purple-500" />
+                    <CheckCircle2 className="h-5 w-5 text-blue-500" />
                     {t('components.lighting.title')}
                   </h3>
                   <p className="text-foreground leading-relaxed">
@@ -157,7 +157,7 @@ export default function WhatIsAnImagePromptPage() {
                     </p>
                   </div>
 
-                  <div className="border-l-4 border-purple-500 pl-4">
+                  <div className="border-l-4 border-blue-500 pl-4">
                     <p className="font-semibold mb-2">{t('examples.advanced.label')}</p>
                     <p className="text-foreground italic">
                       "{t('examples.advanced.prompt')}"

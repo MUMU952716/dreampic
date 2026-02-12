@@ -6,57 +6,57 @@
     "page_info": "Page {{current}} of {{total}}"
   },
   "metadata": {
-    "title": "Pixmind - AI Image Generation & Analysis Platform",
+    "title": "DreamPic - AI Image Generation & Analysis Platform",
     "description": "Transform images into detailed prompts and generate stunning AI images. Professional AI tools for image analysis and creation.",
-    "keywords": "Pixmind, AI image generation, image analysis, text to image, image to text, AI art, prompt generator"
+    "keywords": "DreamPic, AI image generation, image analysis, text to image, image to text, AI art, prompt generator"
   },
   "seo": {
     "home": {
-      "title": "Free AI Pixmind Generator - Create Professional Avatar Videos | Pixmind",
-      "description": "Professional AI Pixmind video platform with avatar cloning, voice cloning, and 175+ language TTS. Create HD Pixmind videos in 1 minute without cameras or actors. Free trial.",
-      "keywords": "Pixmind,AI avatar,avatar video,virtual presenter,avatar cloning,voice cloning,TTS synthesis,text to video,virtual human generator"
+      "title": "Free AI DreamPic Generator - Create Professional Avatar Videos | DreamPic",
+      "description": "Professional AI DreamPic video platform with avatar cloning, voice cloning, and 175+ language TTS. Create HD DreamPic videos in 1 minute without cameras or actors. Free trial.",
+      "keywords": "DreamPic,AI avatar,avatar video,virtual presenter,avatar cloning,voice cloning,TTS synthesis,text to video,virtual human generator"
     },
     "studio": {
-      "title": "Online Pixmind Video Studio - AI Avatar Creator | Pixmind",
-      "description": "Powerful online Pixmind video creation tool. Support text-to-video, multilingual dubbing, custom avatars. Real-time preview, one-click generation for education, marketing, and training.",
-      "keywords": "Pixmind creator,online video generator,AI video tool,text to video,avatar studio,video creation platform"
+      "title": "Online DreamPic Video Studio - AI Avatar Creator | DreamPic",
+      "description": "Powerful online DreamPic video creation tool. Support text-to-video, multilingual dubbing, custom avatars. Real-time preview, one-click generation for education, marketing, and training.",
+      "keywords": "DreamPic creator,online video generator,AI video tool,text to video,avatar studio,video creation platform"
     },
     "avatars": {
-      "title": "1000+ AI Pixmind Avatars Library - Free Avatar Templates | Pixmind",
+      "title": "1000+ AI DreamPic Avatars Library - Free Avatar Templates | DreamPic",
       "description": "1000+ professional AI avatars for business, education, service, sales, and entertainment. Support custom cloning, create your digital twin from a single photo.",
-      "keywords": "AI avatars,Pixmind library,virtual presenter,avatar templates,custom avatar,avatar cloning"
+      "keywords": "AI avatars,DreamPic library,virtual presenter,avatar templates,custom avatar,avatar cloning"
     },
     "voice": {
-      "title": "AI Voice Cloning - High-Fidelity Voice Synthesis | Pixmind",
+      "title": "AI Voice Cloning - High-Fidelity Voice Synthesis | DreamPic",
       "description": "Advanced AI voice cloning technology, replicate voice characteristics with just 5 minutes of audio. Support 175+ languages for avatar dubbing, audiobooks, and customer service.",
       "keywords": "voice cloning,AI dubbing,voice synthesis,TTS technology,voice replication,AI voice"
     },
     "pricing": {
-      "title": "Pixmind Video Pricing - Flexible Plans, Free Trial | Pixmind",
-      "description": "Transparent pricing for AI Pixmind videos. Free credits available, pay-as-you-go or subscription plans. Enterprise bulk customization with exclusive discounts, API support.",
-      "keywords": "Pixmind pricing,AI video cost,avatar plans,enterprise custom,API service"
+      "title": "DreamPic Video Pricing - Flexible Plans, Free Trial | DreamPic",
+      "description": "Transparent pricing for AI DreamPic videos. Free credits available, pay-as-you-go or subscription plans. Enterprise bulk customization with exclusive discounts, API support.",
+      "keywords": "DreamPic pricing,AI video cost,avatar plans,enterprise custom,API service"
     },
     "blog": {
-      "title": "Pixmind Case Studies & Tutorials - AI Video Guide | Pixmind",
-      "description": "Pixmind application cases, creation tutorials, and industry solutions. Covering education, e-commerce, corporate communication, and customer service AI.",
-      "keywords": "Pixmind cases,AI video tutorial,avatar applications,industry solutions,creation guide"
+      "title": "DreamPic Case Studies & Tutorials - AI Video Guide | DreamPic",
+      "description": "DreamPic application cases, creation tutorials, and industry solutions. Covering education, e-commerce, corporate communication, and customer service AI.",
+      "keywords": "DreamPic cases,AI video tutorial,avatar applications,industry solutions,creation guide"
     }
   },
   "landing": {
     "hero": {
-      "badge": "Free AI Pixmind Generator",
+      "badge": "Free AI DreamPic Generator",
       "subtitle": "Avatar Cloning · Voice Cloning · 175+ Language TTS · 1-Minute Video Generation",
-      "description": "Professional AI Pixmind platform with 1000+ avatar library, 4K HD output support. No camera or actors needed, starting from $1",
+      "description": "Professional AI DreamPic platform with 1000+ avatar library, 4K HD output support. No camera or actors needed, starting from $1",
       "start_creating": "Start Creating",
       "join_discord": "Join Discord",
       "showcase_title": "Core Features Showcase",
-      "showcase_subtitle": "Experience the power of AI Pixmind technology",
+      "showcase_subtitle": "Experience the power of AI DreamPic technology",
       "explore_more": "Explore More AI Features",
       "video_showcases": {
         "digital_anchor": {
           "title": "AI Digital Anchor",
           "description": "Realistic digital anchor supporting multilingual broadcasting",
-          "category": "Pixmind"
+          "category": "DreamPic"
         },
         "avatar_clone": {
           "title": "Avatar Clone Demo",
@@ -218,7 +218,7 @@
   },
   "my_orders": {
     "title": "My Orders",
-    "description": "orders paid with Pixmind.",
+    "description": "orders paid with DreamPic.",
     "no_orders": "No orders found",
     "tip": "",
     "activate_order": "Activate Order",
@@ -384,7 +384,7 @@
   },
   "blog": {
     "title": "Blog & Tutorials",
-    "description": "News, resources, and updates about Pixmind",
+    "description": "News, resources, and updates about DreamPic",
     "read_more_text": "Read More",
     "subtitle": "Learn about AI image prompts, tips, and best practices",
     "category_tutorial": "Tutorial",
@@ -477,7 +477,7 @@
     "edit_invite_link": "Edit Invite Link",
     "copy_invite_link": "Copy Invite Link",
     "invite_code": "Invite Code",
-    "invite_tip": "Invite 1 friend to buy Pixmind credits, reward $50.",
+    "invite_tip": "Invite 1 friend to buy DreamPic credits, reward $50.",
     "invite_balance": "Invite Reward Balance",
     "total_invite_count": "Total Invite Count",
     "total_paid_count": "Total Paid Count",
@@ -485,7 +485,7 @@
     "update_invite_code": "Set Invite Code",
     "update_invite_code_tip": "Input your custom invite code",
     "update_invite_button": "Save",
-    "no_orders": "You can't invite others before you bought Pixmind credits",
+    "no_orders": "You can't invite others before you bought DreamPic credits",
     "no_affiliates": "You're not allowed to invite others, please contact us to apply for permission.",
     "table": {
       "invite_time": "Invite Time",
@@ -503,7 +503,7 @@
     "submit": "Submit",
     "loading": "Submitting...",
     "contact_tip": "Other ways to contact us",
-    "rating_tip": "How do you feel about Pixmind?",
+    "rating_tip": "How do you feel about DreamPic?",
     "placeholder": "Leave your words here..."
   },
   "ai_image": {
@@ -841,7 +841,8 @@
       "enableAudioHint": "Add audio to the generated video",
       "generateButton": "Generate Video",
       "generating": "Generating...",
-      "resultPlaceholder": "Generated video will show here"
+      "resultPlaceholder": "Generated video will show here",
+      "loadFailedHint": "Video failed to load. Try downloading or refreshing the page."
     },
     "imageToVideo": {
       "referenceImage": "Reference Image",
@@ -904,6 +905,7 @@
       "generateFailed": "Generation failed, please try again later",
       "videoGenerateSuccess": "Video generated successfully!",
       "videoGenerateFailed": "Video generation failed",
+      "videoLoadFailed": "Video failed to load",
       "generateTimeout": "Generation timeout, please check history later",
       "unknownTaskStatus": "Unknown task status",
       "queryStatusFailed": "Failed to query task status",
@@ -1161,7 +1163,7 @@
     "title": "About Us",
     "subtitle": "Empowering Everyone to Create with AI",
     "story_title": "Our Story",
-    "story_content": "We founded Pixmind because AI art creation was becoming increasingly powerful yet remained challenging for many to master. We believe everyone deserves the opportunity to express creativity through AI, regardless of technical background or language proficiency.",
+    "story_content": "We founded DreamPic because AI art creation was becoming increasingly powerful yet remained challenging for many to master. We believe everyone deserves the opportunity to express creativity through AI, regardless of technical background or language proficiency.",
     "mission_title": "Our Mission",
     "mission_content": "To make AI art creation more intuitive and accessible to everyone, breaking down technical barriers and language limitations.",
     "values_title": "Our Values",
@@ -1175,17 +1177,17 @@
     "contact_title": "Get in Touch",
     "contact_content": "Interested in collaboration? We welcome inquiries in technical integration and content creation.",
     "contact_button": "Contact Us",
-    "copyright": "© 2025 Pixmind. All rights reserved."
+    "copyright": "© 2025 DreamPic. All rights reserved."
   },
   "contact": {
     "title": "Contact Us",
     "subtitle": "Have questions? We'd love to hear from you. Get in touch with us through the following channels.",
-    "testimonial_title": "Loving Pixmind?",
+    "testimonial_title": "Loving DreamPic?",
     "testimonial_content": "Share your experience! Your testimonial inspires others and helps us improve.",
     "testimonial_button": "Share Your Testimonial",
     "email_title": "Email Us",
     "email_content": "Send us an email and we'll get back to you as soon as possible.",
-    "email_address": "pixmind.service@aimix.pro",
+    "email_address": "contact@dreampic.site",
     "social_title": "Follow us on X",
     "social_content": "Stay updated with our latest features and announcements.",
     "social_handle": "@SplendorZhang"
@@ -1245,7 +1247,7 @@
       "title_free": "Free",
       "title_main": "Work side by side with AI to turn ideas into reality.",
       "title_generator": "Generator",
-      "subtitle": "From concept to creation, PixMind fuels your creative fire.",
+      "subtitle": "From concept to creation, DreamPic fuels your creative fire.",
       "description": "Create stunning visuals with AI. Powered by Nano Banana, Imagen, Veo3.1, and Pixverse.",
       "try_now": "Try it now!",
       "tutorials": "Tutorials"
@@ -1330,14 +1332,14 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "q1_question": "What is PixMind?",
-      "q1_answer": "PixMind is an all-in-one AI platform for image and video creation. Generate images, create videos, enhance quality, and more—with a comprehensive suite of tools designed to produce high-quality visuals effortlessly. Whether you're working on personal projects or professional content, PixMind helps you create stunning results—fast, simple, and hassle-free.",
-      "q2_question": "Is PixMind suitable for beginners?",
-      "q2_answer": "Yes, PixMind is designed to be user-friendly, making it suitable for both beginners and professionals. Its intuitive interface and powerful AI tools enable users to create high-quality designs without prior design experience or learning costs.",
-      "q3_question": "How can I get started with PixMind?",
-      "q3_answer": "Getting started is easy. Just open PixMind in your browser, choose the tool you need, and enter a prompt or upload an image. It's beginner-friendly and takes only a few seconds.",
-      "q4_question": "Do I need design or technical skills to use PixMind?",
-      "q4_answer": "No. PixMind is built for everyone. Its intuitive interface allows anyone, even without design experience, to create professional visuals quickly."
+      "q1_question": "What is DreamPic?",
+      "q1_answer": "DreamPic is an all-in-one AI platform for image and video creation. Generate images, create videos, enhance quality, and more—with a comprehensive suite of tools designed to produce high-quality visuals effortlessly. Whether you're working on personal projects or professional content, DreamPic helps you create stunning results—fast, simple, and hassle-free.",
+      "q2_question": "Is DreamPic suitable for beginners?",
+      "q2_answer": "Yes, DreamPic is designed to be user-friendly, making it suitable for both beginners and professionals. Its intuitive interface and powerful AI tools enable users to create high-quality designs without prior design experience or learning costs.",
+      "q3_question": "How can I get started with DreamPic?",
+      "q3_answer": "Getting started is easy. Just open DreamPic in your browser, choose the tool you need, and enter a prompt or upload an image. It's beginner-friendly and takes only a few seconds.",
+      "q4_question": "Do I need design or technical skills to use DreamPic?",
+      "q4_answer": "No. DreamPic is built for everyone. Its intuitive interface allows anyone, even without design experience, to create professional visuals quickly."
     },
     "showcase": {
       "card1": {
@@ -1351,18 +1353,18 @@
       },
       "card2": {
         "title": "Turn Ideas into Videos with AI",
-        "description": "Generate captivating videos from text prompts or images in seconds. PixMind empowers you to turn ideas into high-quality visuals without editing experience. Control the look and feel of your video by modifying the prompt, animate a still photo into a dynamic clip, or access powerful models like Veo 3.1 and Seedance to create short-form videos, product showcases, or social media content with ease.",
+        "description": "Generate captivating videos from text prompts or images in seconds. DreamPic empowers you to turn ideas into high-quality visuals without editing experience. Control the look and feel of your video by modifying the prompt, animate a still photo into a dynamic clip, or access powerful models like Veo 3.1 and Seedance to create short-form videos, product showcases, or social media content with ease.",
         "start_creating": "Start creating"
       },
       "card3": {
         "title": "Effortless AI Image Generation for All",
-        "description": "Turn your ideas into stunning visuals in seconds with AI. Simply describe what you envision, and watch as PixMind generates images that bring your concept to life. Need precise results? Upload a reference image to maintain style consistency and control the output. Go beyond basic generation—apply artistic filters and effects to transform any photo into sketches, anime art, oil paintings, watercolors, pixel art, and more. Fast, intuitive, and endlessly creative.",
+        "description": "Turn your ideas into stunning visuals in seconds with AI. Simply describe what you envision, and watch as DreamPic generates images that bring your concept to life. Need precise results? Upload a reference image to maintain style consistency and control the output. Go beyond basic generation—apply artistic filters and effects to transform any photo into sketches, anime art, oil paintings, watercolors, pixel art, and more. Fast, intuitive, and endlessly creative.",
         "start_creating": "Start creating"
       }
     },
     "effects": {
       "title": "Transform Text & Images into Videos with These Trending AI Video Effects",
-      "description": "Pixmind AI provides a variety of innovative AI video effects, including AI Kiss, AI Hug, AI Inflate, and more. Unleash your creativity now with these trending AI video generators!"
+      "description": "DreamPic AI provides a variety of innovative AI video effects, including AI Kiss, AI Hug, AI Inflate, and more. Unleash your creativity now with these trending AI video generators!"
     }
   },
   "affiliate": {

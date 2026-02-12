@@ -445,7 +445,7 @@ export default function VideoToPromptPage() {
   // Prevent hydration mismatch by not rendering dynamic content until mounted
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-purple-50/20 dark:to-purple-950/10">
+      <div className="min-h-screen bg-gradient-to-b from-background to-blue-50/20 dark:to-blue-950/10">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold mb-4 text-foreground">Free Image to Prompt Generator</h1>
@@ -455,7 +455,7 @@ export default function VideoToPromptPage() {
           </div>
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-center py-20">
-              <Loader2 className="h-8 w-8 animate-spin text-purple-600" />
+              <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
             </div>
           </div>
         </div>
@@ -464,7 +464,7 @@ export default function VideoToPromptPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-purple-50/20 dark:to-purple-950/10">
+    <div className="min-h-screen bg-gradient-to-b from-background to-blue-50/20 dark:to-blue-950/10">
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 text-foreground">{t("title")}</h1>
@@ -491,7 +491,7 @@ export default function VideoToPromptPage() {
             <TabsList className="mb-8 bg-card p-1 border border-border">
               <TabsTrigger
                 value="text-to-video"
-                className="data-[state=active]:bg-purple-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all flex items-center gap-2"
+                className="data-[state=active]:bg-blue-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all flex items-center gap-2"
               >
                 <Video className="h-4 w-4" />
                 <span className="hidden sm:inline">{t("tab_text_to_video")}</span>
@@ -499,7 +499,7 @@ export default function VideoToPromptPage() {
               </TabsTrigger>
               <TabsTrigger
                 value="image-to-video"
-                className="data-[state=active]:bg-purple-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all flex items-center gap-2"
+                className="data-[state=active]:bg-blue-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all flex items-center gap-2"
               >
                 <Camera className="h-4 w-4" />
                 <span className="hidden sm:inline">{t("tab_image_to_video")}</span>
@@ -519,7 +519,7 @@ export default function VideoToPromptPage() {
                         value={textVideoPrompt}
                         onChange={(e) => setTextVideoPrompt(e.target.value)}
                         maxLength={2048}
-                        className="min-h-[200px] resize-none border-purple-300 dark:border-purple-700 focus:border-purple-500 focus:ring-purple-500"
+                        className="min-h-[200px] resize-none border-blue-300 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-500"
                       />
                       <div className="absolute bottom-2 right-2 text-xs text-muted-foreground bg-background/80 px-1 rounded">
                         {textVideoPrompt.length}/2048
@@ -530,7 +530,7 @@ export default function VideoToPromptPage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="w-full border-purple-300 dark:border-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all hover:scale-105"
+                        className="w-full border-blue-300 dark:border-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all hover:scale-105"
                         onClick={handleTextToVideoGenerate}
                         disabled={isVideoProcessing || !textVideoPrompt.trim()}
                       >
@@ -569,7 +569,7 @@ export default function VideoToPromptPage() {
                 <div className="hidden lg:flex items-center justify-center pt-20">
                   <div className={`text-4xl font-bold transition-all duration-500 ${
                     isVideoProcessing 
-                      ? 'text-purple-600 dark:text-purple-400 animate-pulse' 
+                      ? 'text-blue-600 dark:text-blue-400 animate-pulse' 
                       : 'text-gray-300 dark:text-gray-700'
                   }`}>
                     &gt;&gt;
@@ -586,7 +586,7 @@ export default function VideoToPromptPage() {
                           size="sm"
                           variant="outline"
                           onClick={handleCopyVideoPrompt}
-                          className="hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                          className="hover:bg-blue-50 dark:hover:bg-blue-900/20"
                         >
                           <Copy className="h-4 w-4 mr-2" />
                           {t("copy")}
@@ -595,7 +595,7 @@ export default function VideoToPromptPage() {
                     </div>
                     <div className="min-h-[200px] p-4 bg-muted/10/50 rounded-lg border border-border transition-all duration-300">
                       {isVideoProcessing ? (
-                        <div className="flex flex-col items-center justify-center h-full text-purple-600 dark:text-purple-400">
+                        <div className="flex flex-col items-center justify-center h-full text-blue-600 dark:text-blue-400">
                           <Loader2 className="h-12 w-12 mb-4 animate-spin" />
                           <p className="text-sm font-medium">{t("generating_message")}</p>
                           <p className="text-xs text-muted-foreground mt-2">{t("generating_wait")}</p>
@@ -623,7 +623,7 @@ export default function VideoToPromptPage() {
                             setVideoResultPrompt("");
                             toast.success(t("moved_to_input"));
                           }}
-                          className="flex-1 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                          className="flex-1 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                         >
                           ↑ {t("use_as_input")}
                         </Button>
@@ -649,8 +649,8 @@ export default function VideoToPromptPage() {
               <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30">
-                      <Video className="h-5 w-5 text-purple-600" />
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30">
+                      <Video className="h-5 w-5 text-blue-600" />
                     </div>
                     <h4 className="font-semibold text-foreground">{t("what_is_title")}</h4>
                   </div>
@@ -661,8 +661,8 @@ export default function VideoToPromptPage() {
 
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30">
-                      <Wand2 className="h-5 w-5 text-purple-600" />
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30">
+                      <Wand2 className="h-5 w-5 text-blue-600" />
                     </div>
                     <h4 className="font-semibold text-foreground">{t("what_makes_good_title")}</h4>
                   </div>
@@ -682,7 +682,7 @@ export default function VideoToPromptPage() {
                     <h3 className="font-semibold mb-4 text-foreground">{t("upload_image")}</h3>
                     <label htmlFor="video-image-upload" className="cursor-pointer">
                       <div
-                        className="border-2 border-dashed border-purple-300 dark:border-purple-700 rounded-lg p-8 text-center hover:border-purple-400 transition-colors h-[300px] flex items-center justify-center"
+                        className="border-2 border-dashed border-blue-300 dark:border-blue-700 rounded-lg p-8 text-center hover:border-blue-400 transition-colors h-[300px] flex items-center justify-center"
                         onDragOver={handleDragOver}
                         onDrop={handleVideoImageDrop}
                       >
@@ -709,7 +709,7 @@ export default function VideoToPromptPage() {
                           </div>
                         ) : (
                           <div>
-                            <Upload className="h-12 w-12 mx-auto mb-4 text-purple-400" />
+                            <Upload className="h-12 w-12 mx-auto mb-4 text-blue-400" />
                             <p className="text-lg font-medium mb-2">{t("upload_hint")}</p>
                             <p className="text-sm text-muted-foreground">{t("upload_format")}</p>
                           </div>
@@ -771,7 +771,7 @@ export default function VideoToPromptPage() {
                       </div>
 
                       <Button
-                        className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
                         onClick={handleImageToVideoGenerate}
                         disabled={isVideoGenerating || !videoImage}
                       >
@@ -798,7 +798,7 @@ export default function VideoToPromptPage() {
                           size="sm"
                           variant="outline"
                           onClick={handleCopyVideoImagePrompt}
-                          className="hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                          className="hover:bg-blue-50 dark:hover:bg-blue-900/20"
                         >
                           <Copy className="h-4 w-4 mr-2" />
                           {t("copy")}
@@ -807,7 +807,7 @@ export default function VideoToPromptPage() {
                     </div>
                     <div className="min-h-[400px] p-4 bg-muted/10/50 rounded-lg border border-border">
                       {isVideoGenerating ? (
-                        <div className="flex flex-col items-center justify-center h-full text-purple-600 dark:text-purple-400">
+                        <div className="flex flex-col items-center justify-center h-full text-blue-600 dark:text-blue-400">
                           <Loader2 className="h-12 w-12 mb-4 animate-spin" />
                           <p className="text-sm font-medium">{t("analyzing_message")}</p>
                           <p className="text-xs text-muted-foreground mt-2">{t("generating_wait")}</p>
@@ -833,23 +833,23 @@ export default function VideoToPromptPage() {
                 <h3 className="text-2xl font-bold text-center mb-8 text-foreground">{t("how_to_use_title")}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                   <Card className="p-4">
-                    <div className="text-2xl font-bold text-purple-600 mb-2">1</div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">1</div>
                     <p className="text-sm">{t("i2v_step1")}</p>
                   </Card>
                   <Card className="p-4">
-                    <div className="text-2xl font-bold text-purple-600 mb-2">2</div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">2</div>
                     <p className="text-sm">{t("i2v_step2")}</p>
                   </Card>
                   <Card className="p-4">
-                    <div className="text-2xl font-bold text-purple-600 mb-2">3</div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">3</div>
                     <p className="text-sm">{t("i2v_step3")}</p>
                   </Card>
                   <Card className="p-4">
-                    <div className="text-2xl font-bold text-purple-600 mb-2">4</div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">4</div>
                     <p className="text-sm">{t("i2v_step4")}</p>
                   </Card>
                   <Card className="p-4">
-                    <div className="text-2xl font-bold text-purple-600 mb-2">5</div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">5</div>
                     <p className="text-sm">{t("i2v_step5")}</p>
                   </Card>
                 </div>
@@ -861,7 +861,7 @@ export default function VideoToPromptPage() {
               <DialogContent className="sm:max-w-[525px]">
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-2 text-xl">
-                    <Edit className="h-5 w-5 text-purple-600" />
+                    <Edit className="h-5 w-5 text-blue-600" />
                     Edit with AI
                   </DialogTitle>
                   <DialogDescription className="text-base pt-2">
@@ -876,7 +876,7 @@ export default function VideoToPromptPage() {
                     placeholder="Example: Make it more artistic, add sunset lighting, change to watercolor style..."
                     value={editInstruction}
                     onChange={(e) => setEditInstruction(e.target.value)}
-                    className="min-h-[120px] focus:border-purple-500 focus:ring-purple-500"
+                    className="min-h-[120px] focus:border-blue-500 focus:ring-blue-500"
                     autoFocus
                   />
                   <p className="text-xs text-muted-foreground mt-2">
@@ -897,7 +897,7 @@ export default function VideoToPromptPage() {
                   <Button
                     onClick={handleEditWithAI}
                     disabled={!editInstruction.trim()}
-                    className="flex-1 sm:flex-none bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all"
+                    className="flex-1 sm:flex-none bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all"
                   >
                     <Wand2 className="h-4 w-4 mr-2" />
                     Apply Edit
@@ -911,7 +911,7 @@ export default function VideoToPromptPage() {
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-2 text-xl">
-                    <Globe className="h-5 w-5 text-purple-600" />
+                    <Globe className="h-5 w-5 text-blue-600" />
                     Translate Prompt
                   </DialogTitle>
                   <DialogDescription className="text-base pt-2">
@@ -923,7 +923,7 @@ export default function VideoToPromptPage() {
                     Target Language
                   </label>
                   <Select value={targetLanguage} onValueChange={setTargetLanguage}>
-                    <SelectTrigger className="w-full h-11 focus:ring-purple-500">
+                    <SelectTrigger className="w-full h-11 focus:ring-blue-500">
                       <SelectValue placeholder="Select language" />
                     </SelectTrigger>
                     <SelectContent className="max-h-[300px]">
@@ -998,7 +998,7 @@ export default function VideoToPromptPage() {
                   </Button>
                   <Button
                     onClick={handleTranslate}
-                    className="flex-1 sm:flex-none bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all"
+                    className="flex-1 sm:flex-none bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all"
                   >
                     <Globe className="h-4 w-4 mr-2" />
                     Translate
@@ -1011,7 +1011,7 @@ export default function VideoToPromptPage() {
           <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-2">
               {t("cta_text")}{" "}
-              <a href="#" className="text-purple-600 hover:underline font-medium">
+              <a href="#" className="text-blue-600 hover:underline font-medium">
                 {t("cta_link")}
               </a>{" "}
               {t("cta_suffix")}

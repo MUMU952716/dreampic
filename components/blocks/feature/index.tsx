@@ -9,13 +9,13 @@ export default function Feature({ section }: { section: SectionType }) {
   return (
     <section id={section.name} className="relative py-24 overflow-hidden">
       {/* 现代背景 */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-pink-950/20" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse animation-delay-400" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-blue-50/30 to-pink-50/50 dark:from-blue-950/20 dark:via-blue-950/10 dark:to-pink-950/20" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse animation-delay-400" />
       
       <div className="container relative z-10">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center animate-fade-in-up">
-          <h2 className="mb-4 text-pretty text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent dark:from-white dark:via-blue-200 dark:to-purple-200 lg:text-5xl">
+          <h2 className="mb-4 text-pretty text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-blue-800 bg-clip-text text-transparent dark:from-white dark:via-blue-200 dark:to-blue-200 lg:text-5xl">
             {section.title}
           </h2>
           <p className="mb-12 max-w-2xl text-lg text-muted-foreground/80 leading-relaxed">
@@ -35,7 +35,7 @@ export default function Feature({ section }: { section: SectionType }) {
               
               <div className="relative z-10">
                 {item.icon && (
-                  <div className="mb-6 flex size-20 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500">
+                  <div className="mb-6 flex size-20 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500">
                     <Icon name={item.icon} className="size-10 text-white" />
                   </div>
                 )}
@@ -48,7 +48,7 @@ export default function Feature({ section }: { section: SectionType }) {
               </div>
               
               {/* 悬停效果光晕 */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/0 via-purple-400/0 to-pink-400/0 group-hover:from-blue-400/10 group-hover:via-purple-400/10 group-hover:to-pink-400/10 transition-all duration-500" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/0 via-blue-400/0 to-pink-400/0 group-hover:from-blue-400/10 group-hover:via-blue-400/10 group-hover:to-pink-400/10 transition-all duration-500" />
             </div>
           ))}
         </div>

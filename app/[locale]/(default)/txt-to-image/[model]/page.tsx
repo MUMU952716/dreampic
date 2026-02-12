@@ -679,7 +679,7 @@ export default function TextToImagePage() {
             <TabsList className="mb-8 bg-card p-1 border border-border">
               <TabsTrigger
                 value="text-to-image"
-                className="data-[state=active]:bg-purple-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all"
+                className="data-[state=active]:!bg-blue-600 data-[state=active]:!text-white px-6 py-2.5 rounded-md transition-all"
               >
                 {t('txt_to_image.title')}
               </TabsTrigger>
@@ -687,7 +687,7 @@ export default function TextToImagePage() {
               {routeModel !== 'google-imagen' && (
                 <TabsTrigger
                   value="image-to-image"
-                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white px-6 py-2.5 rounded-md transition-all"
+                  className="data-[state=active]:!bg-blue-600 data-[state=active]:!text-white px-6 py-2.5 rounded-md transition-all"
                 >
                   {t('image_to_image.title')}
                 </TabsTrigger>
@@ -702,7 +702,7 @@ export default function TextToImagePage() {
                     <h3 className="text-lg font-semibold mb-2 text-foreground">{t('prompt_label')}</h3>
                     <p className="text-sm text-muted-foreground mb-4">
                       {t('prompt_description')}{" "}
-                      <a href="#" className="text-purple-600 hover:underline">
+                      <a href="#" className="!text-blue-600 hover:!text-blue-700 hover:underline">
                         {t('prompt_link')}
                       </a>
                     </p>
@@ -712,7 +712,7 @@ export default function TextToImagePage() {
                         value={prompt}
                         onChange={(e) => setPrompt(e.target.value)}
                         maxLength={2048}
-                        className="min-h-[120px] resize-none border-border focus:border-purple-500 focus:ring-purple-500"
+                        className="min-h-[120px] resize-none border-border focus:border-blue-500 focus:ring-blue-500"
                       />
                       <div className="absolute bottom-2 right-2 text-xs text-muted-foreground">
                         {prompt.length}/2048
@@ -776,7 +776,7 @@ export default function TextToImagePage() {
                   <Button
                     onClick={handleGenerate}
                     disabled={!prompt || isGenerating}
-                    className="w-full bg-purple-600 hover:bg-purple-700"
+                    className="w-full !bg-blue-600 hover:!bg-blue-700"
                     size="lg"
                   >
                     {isGenerating ? t('generating') : t('generate_image')}
@@ -801,7 +801,7 @@ export default function TextToImagePage() {
                   })()}
 
                   {!session && (
-                    <p className="text-sm text-center text-muted-foreground">
+                    <p className="text-sm text-center text-blue-600/90">
                       {t('login_to_get_credits')}
                     </p>
                   )}
@@ -811,13 +811,13 @@ export default function TextToImagePage() {
                     <div className="text-muted-foreground font-medium">
                       Credits: 2 ⚡
                     </div>
-                    <Button variant="link" className="text-purple-600 hover:text-purple-700 p-0 h-auto">
+                    <Button variant="link" className="text-blue-600 hover:text-blue-700 p-0 h-auto">
                       Get More Credits &gt;
                     </Button>
                   </div>
 
                   <div className="text-center pt-2 border-t border-border">
-                    <Button variant="link" className="text-purple-600 hover:text-purple-700 p-0 h-auto">
+                    <Button variant="link" className="text-blue-600 hover:text-blue-700 p-0 h-auto">
                       📜 View History
                     </Button>
                   </div> */}
@@ -827,7 +827,7 @@ export default function TextToImagePage() {
                 <div className="bg-muted/30 rounded-xl p-8 flex items-center justify-center min-h-[500px] border-2 border-dashed border-border">
                   {isGenerating ? (
                     <div className="text-center">
-                      <div className="w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                      <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                       <p className="text-muted-foreground">Generating your image...</p>
                     </div>
                   ) : generatedImage ? (
@@ -861,7 +861,7 @@ export default function TextToImagePage() {
                             link.click();
                           }}
                           size="sm"
-                          className="bg-purple-600 hover:bg-purple-700"
+                          className="bg-blue-600 hover:bg-blue-700"
                         >
                           Download
                         </Button>
@@ -901,7 +901,7 @@ export default function TextToImagePage() {
                     </p>
                     
                     {!referenceImagePreview ? (
-                      <label className="block border-2 border-dashed border-border rounded-lg p-8 text-center cursor-pointer hover:border-purple-500 transition-colors">
+                      <label className="block border-2 border-dashed border-border rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 transition-colors">
                         <input
                           type="file"
                           accept="image/*"
@@ -956,7 +956,7 @@ export default function TextToImagePage() {
                         value={i2iPrompt}
                         onChange={(e) => setI2iPrompt(e.target.value)}
                         maxLength={2048}
-                        className="min-h-[120px] resize-none border-border focus:border-purple-500 focus:ring-purple-500"
+                        className="min-h-[120px] resize-none border-border focus:border-blue-500 focus:ring-blue-500"
                       />
                       <div className="absolute bottom-2 right-2 text-xs text-muted-foreground">
                         {i2iPrompt.length}/2048
@@ -1016,7 +1016,7 @@ export default function TextToImagePage() {
                   <Button
                     onClick={handleImageToImageGenerate}
                     disabled={!referenceImage || !i2iPrompt || isGeneratingI2I}
-                    className="w-full bg-purple-600 hover:bg-purple-700"
+                    className="w-full !bg-blue-600 hover:!bg-blue-700"
                     size="lg"
                   >
                     {isGeneratingI2I ? t('generating') : t('generate_image')}
@@ -1041,7 +1041,7 @@ export default function TextToImagePage() {
                   })()}
 
                   {!session && (
-                    <p className="text-sm text-center text-muted-foreground">
+                    <p className="text-sm text-center text-blue-600/90">
                       {t('login_to_get_credits')}
                     </p>
                   )}
@@ -1050,13 +1050,13 @@ export default function TextToImagePage() {
                     <div className="text-muted-foreground font-medium">
                       Credits: 3 ⚡
                     </div>
-                    <Button variant="link" className="text-purple-600 hover:text-purple-700 p-0 h-auto">
+                    <Button variant="link" className="text-blue-600 hover:text-blue-700 p-0 h-auto">
                       Get More Credits &gt;
                     </Button>
                   </div>
 
                   <div className="text-center pt-2 border-t border-border">
-                    <Button variant="link" className="text-purple-600 hover:text-purple-700 p-0 h-auto">
+                    <Button variant="link" className="text-blue-600 hover:text-blue-700 p-0 h-auto">
                       📜 View History
                     </Button>
                   </div> */}
@@ -1066,7 +1066,7 @@ export default function TextToImagePage() {
                 <div className="bg-muted/30 rounded-xl p-8 flex items-center justify-center min-h-[500px] border-2 border-dashed border-border">
                   {isGeneratingI2I ? (
                     <div className="text-center">
-                      <div className="w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                      <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                       <p className="text-muted-foreground">Generating your image...</p>
                     </div>
                   ) : generatedI2IImage ? (
@@ -1092,7 +1092,7 @@ export default function TextToImagePage() {
                             link.click();
                           }}
                           size="sm"
-                          className="bg-purple-600 hover:bg-purple-700"
+                          className="bg-blue-600 hover:bg-blue-700"
                         >
                           Download
                         </Button>
@@ -1139,38 +1139,38 @@ export default function TextToImagePage() {
                 <h3 className="text-2xl font-bold mb-6 text-center text-foreground text-foreground">{t('prompt_guide.core_structure_title')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="bg-background rounded-lg p-6 shadow-md border border-border">
-                    <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">
+                    <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">
                       1
                     </div>
                     <h4 className="font-semibold text-lg mb-2 text-foreground text-foreground">{t('prompt_guide.subject_title')}</h4>
                     <p className="text-sm text-muted-foreground">
                       {t('prompt_guide.subject_desc')}
                     </p>
-                    <p className="text-xs text-purple-600 dark:text-purple-400 mt-2">
+                    <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">
                       {t('prompt_guide.subject_example')}
                     </p>
                   </div>
                   <div className="bg-background rounded-lg p-6 shadow-md border border-border">
-                    <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">
+                    <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">
                       2
                     </div>
                     <h4 className="font-semibold text-lg mb-2 text-foreground text-foreground">{t('prompt_guide.background_title')}</h4>
                     <p className="text-sm text-muted-foreground">
                       {t('prompt_guide.background_desc')}
                     </p>
-                    <p className="text-xs text-purple-600 dark:text-purple-400 mt-2">
+                    <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">
                       {t('prompt_guide.background_example')}
                     </p>
                   </div>
                   <div className="bg-background rounded-lg p-6 shadow-md border border-border">
-                    <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">
+                    <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-4 text-xl font-bold">
                       3
                     </div>
                     <h4 className="font-semibold text-lg mb-2 text-foreground text-foreground">{t('prompt_guide.style_title')}</h4>
                     <p className="text-sm text-muted-foreground">
                       {t('prompt_guide.style_desc')}
                     </p>
-                    <p className="text-xs text-purple-600 dark:text-purple-400 mt-2">
+                    <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">
                       {t('prompt_guide.style_example')}
                     </p>
                   </div>
@@ -1181,15 +1181,15 @@ export default function TextToImagePage() {
                   <h4 className="font-semibold text-lg mb-4 text-foreground">{t('prompt_guide.progression_title')}</h4>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <span className="text-purple-600 font-semibold min-w-[80px]">{t('prompt_guide.basic_label')}</span>
+                      <span className="text-blue-600 font-semibold min-w-[80px]">{t('prompt_guide.basic_label')}</span>
                       <span className="text-sm text-foreground">"{t('prompt_guide.basic_example')}"</span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <span className="text-purple-600 font-semibold min-w-[80px]">{t('prompt_guide.enhanced_label')}</span>
+                      <span className="text-blue-600 font-semibold min-w-[80px]">{t('prompt_guide.enhanced_label')}</span>
                       <span className="text-sm text-foreground">"{t('prompt_guide.enhanced_example')}"</span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <span className="text-purple-600 font-semibold min-w-[80px]">{t('prompt_guide.detailed_label')}</span>
+                      <span className="text-blue-600 font-semibold min-w-[80px]">{t('prompt_guide.detailed_label')}</span>
                       <span className="text-sm text-foreground">"{t('prompt_guide.detailed_example')}"</span>
                     </div>
                   </div>
@@ -1205,23 +1205,23 @@ export default function TextToImagePage() {
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
-                      <span className="font-semibold text-purple-600">Camera proximity:</span>
+                      <span className="font-semibold text-blue-600">Camera proximity:</span>
                       <span className="text-muted-foreground"> "close-up", "zoomed out", "macro"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Camera position:</span>
+                      <span className="font-semibold text-blue-600">Camera position:</span>
                       <span className="text-muted-foreground"> "aerial photo", "from below", "eye-level"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Lighting:</span>
+                      <span className="font-semibold text-blue-600">Lighting:</span>
                       <span className="text-muted-foreground"> "natural lighting", "dramatic lighting", "soft diffused light"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Camera settings:</span>
+                      <span className="font-semibold text-blue-600">Camera settings:</span>
                       <span className="text-muted-foreground"> "bokeh", "soft focus", "motion blur", "shallow depth of field"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Lens types:</span>
+                      <span className="font-semibold text-blue-600">Lens types:</span>
                       <span className="text-muted-foreground"> "35mm", "macro lens", "fisheye lens", "100mm"</span>
                     </div>
                   </div>
@@ -1234,19 +1234,19 @@ export default function TextToImagePage() {
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
-                      <span className="font-semibold text-purple-600">Historical styles:</span>
+                      <span className="font-semibold text-blue-600">Historical styles:</span>
                       <span className="text-muted-foreground"> "impressionist painting", "renaissance painting", "pop art"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Modern styles:</span>
+                      <span className="font-semibold text-blue-600">Modern styles:</span>
                       <span className="text-muted-foreground"> "digital art", "3D render", "watercolor", "oil painting"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Film types:</span>
+                      <span className="font-semibold text-blue-600">Film types:</span>
                       <span className="text-muted-foreground"> "polaroid portrait", "black and white film", "vintage film"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Quality enhancers:</span>
+                      <span className="font-semibold text-blue-600">Quality enhancers:</span>
                       <span className="text-muted-foreground"> "4K", "HDR", "high quality", "professional photography"</span>
                     </div>
                   </div>
@@ -1259,15 +1259,15 @@ export default function TextToImagePage() {
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
-                      <span className="font-semibold text-purple-600">Material combinations:</span>
+                      <span className="font-semibold text-blue-600">Material combinations:</span>
                       <span className="text-muted-foreground"> "duffle bag made of cheese", "glass sculpture of a bird"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Shape transformations:</span>
+                      <span className="font-semibold text-blue-600">Shape transformations:</span>
                       <span className="text-muted-foreground"> "neon tubes in the shape of a bird", "clouds forming a dragon"</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">Descriptive language:</span>
+                      <span className="font-semibold text-blue-600">Descriptive language:</span>
                       <span className="text-muted-foreground"> Use detailed adjectives and adverbs to paint clear pictures</span>
                     </div>
                   </div>
@@ -1280,19 +1280,19 @@ export default function TextToImagePage() {
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
-                      <span className="font-semibold text-purple-600">1:1 (Square):</span>
+                      <span className="font-semibold text-blue-600">1:1 (Square):</span>
                       <span className="text-muted-foreground"> Social media posts, profile pictures</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">16:9 (Widescreen):</span>
+                      <span className="font-semibold text-blue-600">16:9 (Widescreen):</span>
                       <span className="text-muted-foreground"> Landscapes, backgrounds, wallpapers</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">9:16 (Portrait):</span>
+                      <span className="font-semibold text-blue-600">9:16 (Portrait):</span>
                       <span className="text-muted-foreground"> Tall objects, buildings, waterfalls</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-purple-600">4:3 / 3:4:</span>
+                      <span className="font-semibold text-blue-600">4:3 / 3:4:</span>
                       <span className="text-muted-foreground"> Traditional media and film formats</span>
                     </div>
                   </div>
@@ -1481,7 +1481,7 @@ export default function TextToImagePage() {
                     <span className="text-2xl">👤</span> Portrait Photography
                   </h3>
                   <div className="space-y-3 text-sm">
-                    <div className="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-3">
+                    <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3">
                       <p className="text-foreground">
                         "35mm portrait, film noir, black and white film"
                       </p>
@@ -1606,31 +1606,31 @@ export default function TextToImagePage() {
             <h2 className="text-3xl font-bold text-center mb-12 text-foreground">{t('how_to_use_t2i.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
               <div className="text-center">
-                <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   1
                 </div>
                 <p className="text-sm">{t('how_to_use_t2i.step1')}</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   2
                 </div>
                 <p className="text-sm">{t('how_to_use_t2i.step2')}</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   3
                 </div>
                 <p className="text-sm">{t('how_to_use_t2i.step3')}</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   4
                 </div>
                 <p className="text-sm">{t('how_to_use_t2i.step4')}</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   5
                 </div>
                 <p className="text-sm">{t('how_to_use_t2i.step5')}</p>
@@ -1663,7 +1663,7 @@ export default function TextToImagePage() {
                       />
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center shadow-lg font-bold border-4 border-white">
+                      <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg font-bold border-4 border-white">
                         VS
                       </div>
                     </div>
@@ -1693,7 +1693,7 @@ export default function TextToImagePage() {
                       />
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center shadow-lg font-bold border-4 border-white">
+                      <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg font-bold border-4 border-white">
                         VS
                       </div>
                     </div>
@@ -1723,7 +1723,7 @@ export default function TextToImagePage() {
                       />
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center shadow-lg font-bold border-4 border-white">
+                      <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg font-bold border-4 border-white">
                         VS
                       </div>
                     </div>
@@ -1753,7 +1753,7 @@ export default function TextToImagePage() {
                       />
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center shadow-lg font-bold border-4 border-white">
+                      <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg font-bold border-4 border-white">
                         VS
                       </div>
                     </div>
@@ -1777,25 +1777,25 @@ export default function TextToImagePage() {
               <h2 className="text-3xl font-bold text-center mb-12 text-foreground">{t('how_to_use_i2i.title')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                     1
                   </div>
                   <p className="text-sm">{t('how_to_use_i2i.step1')}</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                     2
                   </div>
                   <p className="text-sm">{t('how_to_use_i2i.step2')}</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                     3
                   </div>
                   <p className="text-sm">{t('how_to_use_i2i.step3')}</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                     4
                   </div>
                   <p className="text-sm">{t('how_to_use_i2i.step4')}</p>
@@ -1859,7 +1859,7 @@ export default function TextToImagePage() {
                           <span>{t('model_comparison.photo_realistic_example')}</span>
                           <div className="relative group">
                             <svg
-                              className="w-4 h-4 text-purple-600 cursor-help"
+                              className="w-4 h-4 text-blue-600 cursor-help"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"

@@ -91,36 +91,42 @@ export default function Header({ header }: { header: HeaderType }) {
       
       <section
         className={cn(
-          "py-4 transition-all duration-300",
+          "pt-2 pb-4 transition-[background,border,box-shadow] duration-300",
           isSticky
             ? "fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
             : "relative bg-transparent"
         )}
       >
         <div className="container">
-          <nav className="hidden justify-between lg:flex">
-          <div className="flex items-center gap-6">
+          <nav className="hidden lg:flex lg:items-center lg:gap-6 lg:w-full">
+          {/* 左侧品牌区：固定最小宽度，禁止被挤压导致 DreamPic 截成 D... */}
+          <div className="flex items-center shrink-0 lg:min-w-[260px] -ml-4 md:-ml-8 overflow-visible">
             <Link
               href={(header.brand?.url as any) || "/"}
-              className="flex items-center gap-2"
+              className="flex items-end gap-1 shrink-0"
             >
               {header.brand?.logo?.src && (
-                <img
-                  src={header.brand.logo.src}
-                  alt="ImagetoPrompt"
-                  className="w-8"
-                  style={{width: '145px', height: '45px'}}
-                />
-              )}
-              {/* {header.brand?.title && (
-                <span className="text-xl text-primary font-bold">
-                  {header.brand?.title || ""}
+                <span className="shrink-0 h-8 w-9 overflow-hidden flex items-end bg-background">
+                  <img
+                    src={header.brand.logo.src}
+                    alt=""
+                    width={260}
+                    height={52}
+                    className="object-left object-contain h-8 w-auto min-w-[160px]"
+                    style={{ objectFit: 'contain' }}
+                    aria-hidden
+                  />
                 </span>
-              )} */}
+              )}
+              <span className="text-3xl font-bold text-foreground tracking-tight leading-none pb-0.5 whitespace-nowrap shrink-0">
+                {header.brand?.title || "DreamPic"}
+              </span>
             </Link>
-            <div className="flex items-center">
-              <NavigationMenu delayDuration={100} skipDelayDuration={300}>
-                <NavigationMenuList>
+          </div>
+          {/* 中间导航区 ~50-60% */}
+          <div className="flex items-center justify-center min-w-0 lg:flex-1 lg:min-w-0">
+            <NavigationMenu delayDuration={100} skipDelayDuration={300}>
+              <NavigationMenuList className="gap-1 lg:gap-4">
                   {header.nav?.items?.map((item, i) => {
                     if (item.children && item.children.length > 0) {
                       return (
@@ -241,11 +247,11 @@ export default function Header({ header }: { header: HeaderType }) {
                       </NavigationMenuItem>
                     );
                   })}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </div>
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
-          <div className="shrink-0 flex gap-2 items-center">
+          {/* 右侧工具区 ~20-25% */}
+          <div className="flex items-center justify-end gap-2 min-w-0 shrink-0 lg:flex-[0_0_22%]">
             {header.show_locale && <LocaleToggle />}
             {header.show_theme && <ThemeToggle />}
 
@@ -328,20 +334,24 @@ export default function Header({ header }: { header: HeaderType }) {
           <div className="flex items-center justify-between">
             <Link
               href={(header.brand?.url || "/") as any}
-              className="flex items-center gap-2"
+              className="flex items-end gap-1"
             >
               {header.brand?.logo?.src && (
-                <img
-                  src={header.brand.logo.src}
-                  alt="ImagetoPrompt"
-                  style={{width: '150px'}}
-                />
-              )}
-              {header.brand?.title && (
-                <span className="text-xl font-bold">
-                  {header.brand?.title || ""}
+                <span className="shrink-0 h-7 w-8 overflow-hidden flex items-end bg-background">
+                  <img
+                    src={header.brand.logo.src}
+                    alt=""
+                    width={260}
+                    height={52}
+                    className="object-left object-contain h-7 w-auto min-w-[120px]"
+                    style={{ objectFit: 'contain' }}
+                    aria-hidden
+                  />
                 </span>
               )}
+              <span className="text-2xl font-bold text-foreground tracking-tight leading-none pb-0.5">
+                {header.brand?.title || "DreamPic"}
+              </span>
             </Link>
             <Sheet>
               <SheetTrigger asChild>
@@ -354,20 +364,24 @@ export default function Header({ header }: { header: HeaderType }) {
                   <SheetTitle>
                     <Link
                       href={(header.brand?.url || "/") as any}
-                      className="flex items-center gap-2"
+                      className="flex items-end gap-1"
                     >
                       {header.brand?.logo?.src && (
-                        <img
-                          src={header.brand.logo.src}
-                          alt="ImagetoPrompt"
-                          style={{width: '150px'}}
-                        />
-                      )}
-                      {header.brand?.title && (
-                        <span className="text-xl font-bold">
-                          {header.brand?.title || ""}
+                        <span className="shrink-0 h-7 w-8 overflow-hidden flex items-end bg-background">
+                          <img
+                            src={header.brand.logo.src}
+                            alt=""
+                            width={260}
+                            height={52}
+                            className="object-left object-contain h-7 w-auto min-w-[120px]"
+                            style={{ objectFit: 'contain' }}
+                            aria-hidden
+                          />
                         </span>
                       )}
+                      <span className="text-2xl font-bold text-foreground tracking-tight leading-none pb-0.5">
+                        {header.brand?.title || "DreamPic"}
+                      </span>
                     </Link>
                   </SheetTitle>
                 </SheetHeader>

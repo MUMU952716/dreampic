@@ -39,9 +39,9 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
     title,
     description,
     keywords,
-    authors: [{ name: 'Pixmind' }],
-    creator: 'Pixmind',
-    publisher: 'Pixmind',
+    authors: [{ name: 'DreamPic' }],
+    creator: 'DreamPic',
+    publisher: 'DreamPic',
 
     // Open Graph
     openGraph: {
@@ -50,7 +50,7 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
       url,
       title,
       description,
-      siteName: 'Pixmind',
+      siteName: 'DreamPic',
       images: [
         {
           url: imageUrl,
@@ -112,9 +112,9 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Pixmind',
+    name: 'DreamPic',
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}/logo.svg`,
     description: 'Professional AI image generation and analysis platform with image-to-prompt and text-to-image capabilities',
     sameAs: [
       // 添加你的社交媒体链接
@@ -188,10 +188,10 @@ export function generateArticleSchema(article: {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Pixmind',
+      name: 'DreamPic',
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/logo.png`,
+        url: `${baseUrl}/logo.svg`,
       },
     },
   }

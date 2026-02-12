@@ -12,7 +12,7 @@ export function TryNowButton({ locale, label }: { locale: string; label: string 
     >
       <Button
         size="lg"
-        className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-lg rounded-full"
+        className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full"
       >
         {label}
       </Button>

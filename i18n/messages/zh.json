@@ -12,32 +12,32 @@
   },
   "seo": {
     "home": {
-      "title": "免费图像转提示词生成器 - AI图片提示词工具 | Pixmind",
+      "title": "免费图像转提示词生成器 - AI图片提示词工具 | DreamPic",
       "description": "最强大的AI图像提示词生成器。即时将任何图像转换为详细提示词,完美支持Midjourney、DALL-E、Stable Diffusion等平台。",
       "keywords": "图像转提示词,AI提示词生成器,图片提示词,Midjourney,DALL-E,Stable Diffusion,文本转提示词"
     },
     "studio": {
-      "title": "AI图像生成工作室 - 文本转图像工具 | Pixmind",
+      "title": "AI图像生成工作室 - 文本转图像工具 | DreamPic",
       "description": "强大的在线AI图像生成工具。支持文本转图像、提示词增强、多模型选择。实时预览,一键生成,适用于艺术创作、设计、营销等场景。",
       "keywords": "AI图像生成,文本转图像,提示词工具,图像生成器,AI艺术创作"
     },
     "avatars": {
-      "title": "AI图像模型库 - 多种图像生成模型 | Pixmind",
+      "title": "AI图像模型库 - 多种图像生成模型 | DreamPic",
       "description": "提供多种专业AI图像生成模型,包括Flux、Stable Diffusion、Midjourney等。支持不同风格和场景的图像生成需求。",
       "keywords": "AI图像模型,Flux,Stable Diffusion,图像生成,AI艺术"
     },
     "voice": {
-      "title": "AI提示词增强 - 智能提示词优化工具 | Pixmind",
+      "title": "AI提示词增强 - 智能提示词优化工具 | DreamPic",
       "description": "智能AI提示词增强技术,自动优化和丰富您的图像提示词。支持多语言,适用于各种AI图像生成平台。",
       "keywords": "提示词增强,提示词优化,AI提示词,图像生成,多语言支持"
     },
     "pricing": {
-      "title": "定价方案 - 灵活套餐,免费试用 | Pixmind",
+      "title": "定价方案 - 灵活套餐,免费试用 | DreamPic",
       "description": "透明的AI图像生成价格方案。提供免费额度,按需付费或订阅套餐可选。支持API调用。",
       "keywords": "AI图像生成价格,提示词生成费用,订阅套餐,API服务"
     },
     "blog": {
-      "title": "AI图像提示词教程与案例 - 图像生成指南 | Pixmind",
+      "title": "AI图像提示词教程与案例 - 图像生成指南 | DreamPic",
       "description": "AI图像提示词技术教程、应用案例、最佳实践。涵盖Midjourney、DALL-E、Stable Diffusion等平台的实战经验分享。",
       "keywords": "AI提示词教程,图像生成案例,Midjourney教程,提示词技巧"
     }
@@ -218,7 +218,7 @@
   },
   "my_orders": {
     "title": "我的订单",
-    "description": "在 PixMind 上购买的订单。",
+    "description": "在 DreamPic 上购买的订单。",
     "no_orders": "未找到订单",
     "tip": "",
     "activate_order": "激活订单",
@@ -384,7 +384,7 @@
   },
   "blog": {
     "title": "博客与教程",
-    "description": "关于 PixMind 的新闻、资源和更新",
+    "description": "关于 DreamPic 的新闻、资源和更新",
     "read_more_text": "阅读更多",
     "subtitle": "了解AI图片提示词、技巧和最佳实践",
     "category_tutorial": "教程",
@@ -477,7 +477,7 @@
     "edit_invite_link": "编辑邀请链接",
     "copy_invite_link": "复制邀请链接",
     "invite_code": "邀请码",
-    "invite_tip": "每邀请 1 位朋友购买 PixMind，奖励 $50。",
+    "invite_tip": "每邀请 1 位朋友购买 DreamPic，奖励 $50。",
     "invite_balance": "邀请奖励余额",
     "total_invite_count": "总邀请人数",
     "total_paid_count": "已充值人数",
@@ -485,7 +485,7 @@
     "update_invite_code": "设置邀请码",
     "update_invite_code_tip": "输入你的自定义邀请码",
     "update_invite_button": "保存",
-    "no_orders": "你需要先购买过 PixMind 才能邀请朋友",
+    "no_orders": "你需要先购买过 DreamPic 才能邀请朋友",
     "no_affiliates": "你暂无邀请朋友的权限，请联系我们申请开通。",
     "table": {
       "invite_time": "邀请时间",
@@ -843,7 +843,8 @@
       "enableAudioHint": "为生成的视频添加音频",
       "generateButton": "生成视频",
       "generating": "生成中...",
-      "resultPlaceholder": "生成的视频将显示在这里"
+      "resultPlaceholder": "生成的视频将显示在这里",
+      "loadFailedHint": "视频加载失败，可尝试下载或刷新页面。"
     },
     "imageToVideo": {
       "referenceImage": "参考图片",
@@ -906,6 +907,7 @@
       "generateFailed": "生成失败，请稍后重试",
       "videoGenerateSuccess": "视频生成成功！",
       "videoGenerateFailed": "视频生成失败",
+      "videoLoadFailed": "视频加载失败",
       "generateTimeout": "生成超时，请稍后查看历史记录",
       "unknownTaskStatus": "未知任务状态",
       "queryStatusFailed": "查询任务状态失败",
@@ -1185,7 +1187,7 @@
     "title": "关于我们",
     "subtitle": "让每个人都能使用AI创作",
     "story_title": "我们的故事",
-    "story_content": "我们创建Pixmind是因为AI艺术创作变得越来越强大，但对许多人来说仍然具有挑战性。我们相信每个人都应该有机会通过AI表达创造力，无论技术背景或语言能力如何。",
+    "story_content": "我们创建 DreamPic 是因为AI艺术创作变得越来越强大，但对许多人来说仍然具有挑战性。我们相信每个人都应该有机会通过AI表达创造力，无论技术背景或语言能力如何。",
     "mission_title": "我们的使命",
     "mission_content": "让AI艺术创作对每个人来说都更加直观和易用，打破技术障碍和语言限制。",
     "values_title": "我们的价值观",
@@ -1199,11 +1201,11 @@
     "contact_title": "联系我们",
     "contact_content": "对合作感兴趣？我们欢迎技术集成和内容创作方面的咨询。",
     "contact_button": "联系我们",
-    "copyright": "© 2025 Pixmind. 保留所有权利。"
+    "copyright": "© 2025 DreamPic. 保留所有权利。"
   },
   "affiliateProgram": {
     "title": "分销合作计划",
-    "subtitle": "推广Pixmind并赚取持续佣金",
+    "subtitle": "推广 DreamPic 并赚取持续佣金",
     "commission_title": "赚取30%佣金",
     "commission_desc": "首年所有订阅付款（包括续订和升级）均可获得佣金",
     "benefits_title": "计划优势",
@@ -1235,15 +1237,15 @@
     "apply_desc": "准备加入我们的分销计划？请发送电子邮件告诉我们：",
     "apply_step1": "您的详细信息和背景",
     "apply_step2": "您的推广策略或平台",
-    "apply_step3": "您计划如何推广Pixmind",
+    "apply_step3": "您计划如何推广 DreamPic",
     "apply_note": "我们的团队将审核您的申请并提供后续步骤指导。",
     "step1": "1",
     "step1_desc": "您的详细信息和背景",
     "step2": "2",
     "step2_desc": "您的推广策略或平台",
     "step3": "3",
-    "step3_desc": "您计划如何推广Pixmind",
-    "apply_button": "立即申请: pixmind.service@aimix.pro",
+    "step3_desc": "您计划如何推广 DreamPic",
+    "apply_button": "立即申请: contact@dreampic.site",
     "review_desc": "我们的团队将审核您的申请并提供后续步骤指导。",
     "faq_title": "常见问题",
     "faq1_q": "30%的佣金涵盖什么？",
@@ -1256,12 +1258,12 @@
   "contact": {
     "title": "联系我们",
     "subtitle": "有问题吗？我们很乐意听到您的声音。通过以下渠道与我们联系。",
-    "testimonial_title": "喜欢Pixmind吗？",
+    "testimonial_title": "喜欢 DreamPic 吗？",
     "testimonial_content": "分享您的体验！您的推荐能够激励他人，帮助我们改进。",
     "testimonial_button": "分享您的推荐",
     "email_title": "发送邮件",
     "email_content": "给我们发送电子邮件，我们会尽快回复您。",
-    "email_address": "pixmind.service@aimix.pro",
+    "email_address": "contact@dreampic.site",
     "social_title": "在X上关注我们",
     "social_content": "了解我们最新的功能和公告。",
     "social_handle": "@SplendorZhang"
@@ -1271,7 +1273,7 @@
     "title": "API文档",
     "subtitle": "通过我们强大的API将AI图像功能集成到您的应用程序中",
     "overview_title": "概述",
-    "overview_desc": "Pixmind提供目前处于测试阶段的API服务，用于将AI图像功能集成到您的应用程序中。我们的API提供与我们网页界面相同的强大功能。",
+    "overview_desc": "DreamPic 提供目前处于测试阶段的API服务，用于将AI图像功能集成到您的应用程序中。我们的API提供与我们网页界面相同的强大功能。",
     "available_apis_title": "可用的API",
     "image_to_prompt_title": "图像转提示词",
     "image_to_prompt_desc": "从图像生成详细、描述性的图像提示词",
@@ -1288,8 +1290,8 @@
     "join_requirement2": "用例描述",
     "join_requirement3": "预期的每日API调用量",
     "join_requirement4": "预期的每分钟调用量",
-    "contact_us": "联系我们: pixmind.service@aimix.pro",
-    "contact_button": "联系我们: pixmind.service@aimix.pro",
+    "contact_us": "联系我们: contact@dreampic.site",
+    "contact_button": "联系我们: contact@dreampic.site",
     "pricing_title": "定价与访问",
     "pricing_desc1": "API使用不包含在我们的订阅计划中，需要单独付费。",
     "pricing_desc2": "订阅用户根据其层级获得免费的API测试调用。请联系我们获取详细的定价信息。",
@@ -1393,7 +1395,7 @@
       "title_free": "免费",
       "title_main": "与AI并肩创作,让灵感照进现实。",
       "title_generator": "生成器",
-      "subtitle": "从创意到作品,PixMind 点燃你的创作激情。",
+      "subtitle": "从创意到作品，DreamPic 点燃你的创作激情。",
       "description": "用 AI 创作惊艳视觉效果。由 Nano Banana、Imagen、Veo3.1 和 Pixverse 提供支持。",
       "try_now": "立即试用！",
       "tutorials": "教程"
@@ -1478,14 +1480,14 @@
     },
     "faq": {
       "title": "常见问题",
-      "q1_question": "什么是 PixMind？",
-      "q1_answer": "PixMind 是一个全方位的 AI 图像和视频创作平台。生成图像、创建视频、增强质量等等——拥有一套完整的工具，旨在轻松制作高质量的视觉内容。无论您是在制作个人项目还是专业内容，PixMind 都能帮助您快速、简单、轻松地创建出令人惊艳的作品。",
-      "q2_question": "PixMind 适合初学者吗？",
-      "q2_answer": "是的，PixMind 被设计成用户友好型，适合初学者和专业人士。其直观的界面和强大的 AI 工具使用户能够在没有设计经验或学习成本的情况下创建高质量的设计。",
-      "q3_question": "我如何开始使用 PixMind？",
-      "q3_answer": "开始使用非常简单。只需在浏览器中打开 PixMind，选择您需要的工具，输入提示词或上传图像即可。它对初学者非常友好，只需几秒钟。",
-      "q4_question": "使用 PixMind 需要设计或技术技能吗？",
-      "q4_answer": "不需要。PixMind 专为每个人设计。其直观的界面使任何人，即使没有设计经验，也能快速创建专业的视觉内容。"
+      "q1_question": "什么是 DreamPic？",
+      "q1_answer": "DreamPic 是一个全方位的 AI 图像和视频创作平台。生成图像、创建视频、增强质量等等——拥有一套完整的工具，旨在轻松制作高质量的视觉内容。无论您是在制作个人项目还是专业内容，DreamPic 都能帮助您快速、简单、轻松地创建出令人惊艳的作品。",
+      "q2_question": "DreamPic 适合初学者吗？",
+      "q2_answer": "是的，DreamPic 被设计成用户友好型，适合初学者和专业人士。其直观的界面和强大的 AI 工具使用户能够在没有设计经验或学习成本的情况下创建高质量的设计。",
+      "q3_question": "我如何开始使用 DreamPic？",
+      "q3_answer": "开始使用非常简单。只需在浏览器中打开 DreamPic，选择您需要的工具，输入提示词或上传图像即可。它对初学者非常友好，只需几秒钟。",
+      "q4_question": "使用 DreamPic 需要设计或技术技能吗？",
+      "q4_answer": "不需要。DreamPic 专为每个人设计。其直观的界面使任何人，即使没有设计经验，也能快速创建专业的视觉内容。"
     },
     "showcase": {
       "card1": {
@@ -1499,18 +1501,18 @@
       },
       "card2": {
         "title": "用 AI 将想法转化为视频",
-        "description": "在几秒钟内从文本提示或图像生成迷人的视频。PixMind 使您能够在没有编辑经验的情况下将想法转化为高质量的视觉内容。通过修改提示来控制视频的外观和感觉，将静态照片动画化为动态片段，或访问 Veo 3.1 和 Seedance 等强大模型，轻松创建短视频、产品展示或社交媒体内容。",
+        "description": "在几秒钟内从文本提示或图像生成迷人的视频。DreamPic 使您能够在没有编辑经验的情况下将想法转化为高质量的视觉内容。通过修改提示来控制视频的外观和感觉，将静态照片动画化为动态片段，或访问 Veo 3.1 和 Seedance 等强大模型，轻松创建短视频、产品展示或社交媒体内容。",
         "start_creating": "开始创作"
       },
       "card3": {
         "title": "轻松为所有人生成 AI 图像",
-        "description": "用 AI 在几秒钟内将您的想法转化为令人惊艳的视觉效果。简单地描述您的构想，然后观看 PixMind 如何生成图像，将您的概念变为现实。需要精确的结果？上传参考图像以保持风格一致性并控制输出。超越基本生成——应用艺术滤镜和效果，将任何照片转换为素描、动漫艺术、油画、水彩画、像素艺术等。快速、直观且创意无限。",
+        "description": "用 AI 在几秒钟内将您的想法转化为令人惊艳的视觉效果。简单地描述您的构想，然后观看 DreamPic 如何生成图像，将您的概念变为现实。需要精确的结果？上传参考图像以保持风格一致性并控制输出。超越基本生成——应用艺术滤镜和效果，将任何照片转换为素描、动漫艺术、油画、水彩画、像素艺术等。快速、直观且创意无限。",
         "start_creating": "开始创作"
       }
     },
     "effects": {
       "title": "使用这些热门的 AI 视频效果将文本和图像转换为视频",
-      "description": "Pixmind AI 提供各种创新的 AI 视频效果，包括 AI Kiss、AI Hug、AI Inflate 等。现在就使用这些热门的 AI 视频生成器释放您的创造力！"
+      "description": "DreamPic AI 提供各种创新的 AI 视频效果，包括 AI Kiss、AI Hug、AI Inflate 等。现在就使用这些热门的 AI 视频生成器释放您的创造力！"
     }
   },
   "affiliate": {

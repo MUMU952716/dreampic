@@ -9,7 +9,7 @@ import { VideoCarousel } from "./video-carousel";
 import { FAQSection } from "./faq-section";
 
 export const metadata: Metadata = {
-  title: "Image to Prompt Generator - AI图像转提示词生成器 | 免费在线工具",
+  title: "DreamPic - AI Image & Prompt Generator | 免费在线工具",
   description: "最强大的AI图像转提示词生成器。将任何图片转换为详细的AI提示词，支持Midjourney、DALL-E、Stable Diffusion等。免费的image to prompt在线工具。",
 };
 
@@ -29,7 +29,7 @@ export default async function LandingPage({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-purple-50 dark:to-purple-950/20">
+    <div className="min-h-screen bg-gradient-to-b from-background to-blue-50 dark:to-blue-950/20">
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-20 pb-16">
         <div className="text-center max-w-4xl mx-auto">
@@ -86,7 +86,7 @@ export default async function LandingPage({
                 </p>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 font-bold text-sm">
+                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-sm">
                       01
                     </div>
                     <div>
@@ -95,7 +95,7 @@ export default async function LandingPage({
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 font-bold text-sm">
+                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-sm">
                       02
                     </div>
                     <div>
@@ -104,12 +104,14 @@ export default async function LandingPage({
                     </div>
                   </div>
                 </div>
-                <Button
-                  size="default"
-                  className="rounded-full px-6"
-                >
-                  {t("showcase.card1.start_creating")}
-                </Button>
+                <Link href={`/${locale}/video-generate/veo`}>
+                  <Button
+                    size="default"
+                    className="rounded-full px-6"
+                  >
+                    {t("showcase.card1.start_creating")}
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -124,7 +126,7 @@ export default async function LandingPage({
                 <p className="text-muted-foreground leading-relaxed">
                   {t("showcase.card2.description")}
                 </p>
-                <Link href={`/${locale}/text-to-video`}>
+                <Link href={`/${locale}/video-generate/veo`}>
                   <Button
                     size="lg"
                     className="rounded-full px-8"
@@ -157,7 +159,7 @@ export default async function LandingPage({
                 <p className="text-muted-foreground leading-relaxed">
                   {t("showcase.card3.description")}
                 </p>
-                <Link href={`/${locale}/text-to-image`}>
+                <Link href={`/${locale}/txt-to-image/nano-banana`}>
                   <Button
                     size="lg"
                     className="rounded-full px-8"

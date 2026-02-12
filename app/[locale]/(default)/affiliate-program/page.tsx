@@ -150,7 +150,7 @@ export default function AffiliatePage() {
                 </li>
               </ul>
               <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600 w-full md:w-auto">
-                <a href="mailto:pixmind.service@aimix.pro">
+                <a href="mailto:contact@dreampic.site">
                   <Mail className="h-5 w-5 mr-2" />
                   {t("apply_button")}
                 </a>

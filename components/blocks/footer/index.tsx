@@ -15,18 +15,18 @@ export default function Footer({ footer }: { footer: FooterType }) {
               {footer.brand && (
                 <div>
                   <div className="flex items-center justify-center gap-2 lg:justify-start">
-                    {footer.brand.logo && (
+                    {footer.brand.logo?.src && (
                       <img
                         src={footer.brand.logo.src}
                         alt={footer.brand.logo.alt || footer.brand.title}
-                        className="h-11"
+                        className="h-11 object-contain"
                       />
                     )}
-                    {/* {footer.brand.title && (
-                      <p className="text-3xl font-semibold">
-                        {footer.brand.title}
+                    {(footer.brand.title || !footer.brand.logo?.src) && (
+                      <p className="text-xl font-semibold text-foreground">
+                        {footer.brand.title || "DreamPic"}
                       </p>
-                    )} */}
+                    )}
                   </div>
                   {footer.brand.description && (
                     <p className="mt-6 text-md text-muted-foreground">
@@ -68,19 +68,21 @@ export default function Footer({ footer }: { footer: FooterType }) {
           </div>
           <div className="mt-8 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
             <div className="flex items-center gap-2 justify-center lg:justify-start flex-wrap">
-              {footer.copyright && (
-                <span>
-                  {footer.copyright.split('pixmind.service@aimix.pro')[0]}
-                </span>
-              )}
-              {footer.copyright && footer.copyright.includes('pixmind.service@aimix.pro') && (
-                <a
-                  href="mailto:pixmind.service@aimix.pro"
-                  className="hover:text-primary underline"
-                >
-                  pixmind.service@aimix.pro
-                </a>
-              )}
+              {footer.copyright && (() => {
+                const emailMatch = footer.copyright.match(/\S+@\S+\.\S+/);
+                const email = emailMatch ? emailMatch[0] : null;
+                const textBeforeEmail = email ? footer.copyright.split(email)[0].trimEnd() : footer.copyright;
+                return (
+                  <>
+                    <span>{textBeforeEmail}</span>
+                    {email && (
+                      <a href={`mailto:${email}`} className="hover:text-primary underline">
+                        {email}
+                      </a>
+                    )}
+                  </>
+                );
+              })()}
             </div>
 
             {footer.agreement && (

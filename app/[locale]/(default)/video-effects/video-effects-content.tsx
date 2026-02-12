@@ -373,7 +373,7 @@ function EffectCard({ effect, localizedName, locale, onClick, onGoCreate }: {
         className="group relative w-full rounded-lg cursor-pointer bg-card border border-border overflow-hidden shadow-sm hover:shadow-md transition-shadow"
         onClick={onClick}
       >
-        <div className="aspect-[224/168] relative bg-gradient-to-br from-purple-500/10 to-pink-500/10 overflow-hidden">
+        <div className="aspect-[224/168] relative bg-gradient-to-br from-blue-500/10 to-indigo-500/10 overflow-hidden">
           {isVisible ? (
             <>
               {!imageLoaded && !imageError && (
@@ -416,7 +416,7 @@ function EffectCard({ effect, localizedName, locale, onClick, onGoCreate }: {
                 e.stopPropagation()
                 onGoCreate(effect)
               }}
-              className="w-full py-1 px-2 bg-purple-600 hover:bg-purple-700 text-white text-[10px] font-medium rounded shadow-lg transition-all hover:scale-105"
+              className="w-full py-1 px-2 bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-medium rounded shadow-lg transition-all hover:scale-105"
             >
               {locale === 'zh' ? '开始创作' : 'Go Create'}
             </button>

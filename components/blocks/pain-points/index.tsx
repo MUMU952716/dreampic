@@ -117,7 +117,7 @@ export function PainPoints({ section }: PainPointsProps) {
 
         {/* 解决方案引导 */}
         <div className="max-w-3xl mx-auto text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-transparent bg-clip-text">
             <h3 className="text-3xl lg:text-4xl font-bold mb-4">
               {section.solution.title}
             </h3>
@@ -128,7 +128,7 @@ export function PainPoints({ section }: PainPointsProps) {
           <Link href="/">
             <Button
               size="lg"
-              className="px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              className="px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border-0 shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
               {section.solution.cta}
               <ArrowRight className="ml-2 h-5 w-5" />

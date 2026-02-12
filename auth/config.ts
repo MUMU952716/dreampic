@@ -12,6 +12,12 @@ if (process.env.AUTH_URL?.replace(/\/$/, "") === "https://dreampic.site") {
 if (process.env.NEXTAUTH_URL?.replace(/\/$/, "") === "https://dreampic.site") {
   process.env.NEXTAUTH_URL = "https://www.dreampic.site";
 }
+if (typeof process.env.AUTH_GOOGLE_ID === "string") {
+  process.env.AUTH_GOOGLE_ID = process.env.AUTH_GOOGLE_ID.trim();
+}
+if (typeof process.env.AUTH_GOOGLE_SECRET === "string") {
+  process.env.AUTH_GOOGLE_SECRET = process.env.AUTH_GOOGLE_SECRET.trim();
+}
 
 const GOOGLE_ONE_TAP_ENABLED = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ONE_TAP_ENABLED === "true";
 const hasGoogleOAuth =

@@ -116,7 +116,7 @@ export default function APIDocsPage() {
                 </li>
               </ul>
               <Button asChild className="bg-blue-500 hover:bg-blue-600">
-                <a href="mailto:pixmind.service@aimix.pro">
+                <a href="mailto:contact@dreampic.site">
                   <Mail className="h-4 w-4 mr-2" />
                   {t("contact_button")}
                 </a>

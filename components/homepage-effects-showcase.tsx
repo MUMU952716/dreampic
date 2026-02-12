@@ -102,7 +102,7 @@ export function HomepageEffectsShowcase({ locale }: { locale: string }) {
         {[...Array(8)].map((_, i) => (
           <div key={i} className="relative group cursor-pointer">
             <div className="bg-card border border-border rounded-xl overflow-hidden aspect-video flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 animate-pulse"></div>
             </div>
             <div className="text-center mt-2 h-5 bg-muted rounded animate-pulse"></div>
           </div>
@@ -151,7 +151,7 @@ export function HomepageEffectsShowcase({ locale }: { locale: string }) {
                   <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-20">
                     <button
                       onClick={(e) => handleGoCreate(effect, e)}
-                      className="w-full py-1.5 px-3 bg-purple-600/60 hover:bg-purple-700/70 backdrop-blur-sm text-white text-xs font-medium rounded-md shadow-md transition-all hover:scale-105"
+                      className="w-full py-1.5 px-3 bg-blue-600/60 hover:bg-blue-700/70 backdrop-blur-sm text-white text-xs font-medium rounded-md shadow-md transition-all hover:scale-105"
                     >
                       {locale === 'zh' ? '开始创作' : 'Go Create'}
                     </button>
