@@ -91,7 +91,7 @@ export default function Header({ header }: { header: HeaderType }) {
       
       <section
         className={cn(
-          "pt-2 pb-4 transition-[background,border,box-shadow] duration-300",
+          "pt-4 pb-4 transition-[background,border,box-shadow] duration-300",
           isSticky
             ? "fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
             : "relative bg-transparent"
